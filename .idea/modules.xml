@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Ramp.iml" filepath="$PROJECT_DIR$/Ramp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RAMP.iml" filepath="$PROJECT_DIR$/RAMP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
