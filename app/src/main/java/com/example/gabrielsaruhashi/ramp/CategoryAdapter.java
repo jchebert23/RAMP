@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.gabrielsaruhashi.ramp.activities.QualificationsQuestionsActivity;
+import com.example.gabrielsaruhashi.ramp.activities.QuestionsIntroActivity;
 import com.example.gabrielsaruhashi.ramp.models.Category;
 
 import java.util.ArrayList;
@@ -37,7 +37,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         categoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, QualificationsQuestionsActivity.class);
+                Intent i = new Intent(context, QuestionsIntroActivity.class);
                 context.startActivity(i);
             }
         });
