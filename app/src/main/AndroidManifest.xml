@@ -20,6 +20,10 @@
             android:name=".helpers.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.QualificationsQuestionsActivity"></activity>
+
+        <activity android:name=".activities.QuestionsIntroActivity"></activity>
+        <activity android:name=".activities.SuggestionsActivity"></activity>
     </application>
 
 </manifest>
