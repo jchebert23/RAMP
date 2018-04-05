@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         categories = new ArrayList<>();
         //initialize the adapter
         adapter = new CategoryAdapter(categories);
