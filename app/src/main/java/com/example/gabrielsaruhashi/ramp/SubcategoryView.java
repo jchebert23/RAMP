@@ -3,15 +3,14 @@ package com.example.gabrielsaruhashi.ramp;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.gabrielsaruhashi.ramp.models.Category;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
 import java.util.ArrayList;
@@ -21,12 +20,12 @@ public class SubcategoryView extends AppCompatActivity {
     //public final static int NUMBER_OF_CATEGORIES = 6;
     public final static ArrayList<String> GUIDE_DESCRIPTIONS = new ArrayList<String>(){
         {
-            add(new String("Guide 1"));
-            add(new String("Guide 2"));
-            add(new String("Guide 3"));
-            add(new String("Guide 4"));
-            add(new String("Guide 5"));
-            add(new String("Guide 6"));
+            add("Guide 1");
+            add("Guide 2");
+            add("Guide 3");
+            add("Guide 4");
+            add("Guide 5");
+            add("Guide 6");
         }
     };
 
@@ -42,23 +41,26 @@ public class SubcategoryView extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_general);
+        setContentView(R.layout.activity_subcategoryview);
 
 
-        guides = new ArrayList<>();
+        guides = dummySubCategory.getGuides();
+        Log.e("Error", guides.toString());
         //initialize the adapter
-        adapter = new GuideAdapter(dummySubCategory.getGuides());
+        adapter = new GuideAdapter(guides);
+
         rvSubCategories = (RecyclerView) findViewById(R.id.rvSubCategories);
         rvSubCategories.setLayoutManager(new LinearLayoutManager(this));
         rvSubCategories.setAdapter(adapter);
 
-        TextView generalTitle = findViewById(R.id.generalTitle);
-        generalTitle.setText(dummySubCategory.getTitle());
+
+        TextView generalTitle = findViewById(R.id.SubCategoryTitle);
+        generalTitle.setText("DEODEODKE");
 
 
 
 
-        getCurrentCategories();
+        //getCurrentCategories();
     }
 
     @Override
@@ -92,9 +94,11 @@ public class SubcategoryView extends AppCompatActivity {
     //get the list of current objects
     private void getCurrentCategories(){
         for(int i = 0; i < GUIDE_DESCRIPTIONS.size(); i++){
-            String guide = new String(dummySubCategory.getGuides().get(i));
+            String guide = GUIDE_DESCRIPTIONS.get(i);
+            Log.e("GUIDE", guide);
             guides.add(guide);
-            adapter.notifyItemInserted(guides.size() - 1);
+            //adapter.notifyItemInserted(guides.size() - 1);
+
         }
     }
 }

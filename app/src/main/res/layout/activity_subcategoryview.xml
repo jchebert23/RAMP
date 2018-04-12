@@ -19,10 +19,11 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvSubCategories"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/TitleQuestionLabel"
+        android:layout_below="@+id/SubCategoryTitle"
         android:layout_marginTop="@dimen/top_margin" />
 
 </RelativeLayout>
