@@ -3,6 +3,8 @@ package com.example.gabrielsaruhashi.ramp.activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.gabrielsaruhashi.ramp.R;
+
 public class HeadingOne extends AppCompatActivity {
 
     @Override

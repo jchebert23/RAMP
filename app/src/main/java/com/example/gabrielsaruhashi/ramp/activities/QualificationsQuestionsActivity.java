@@ -25,25 +25,25 @@ public class QualificationsQuestionsActivity extends AppCompatActivity {
         Button btAns1 = (Button) findViewById(R.id.btAns1);
         btAns1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), QualificationsQuestionsActivity.class);
+                Intent myIntent = new Intent(view.getContext(), SuggestionsActivity.class);
                 startActivityForResult(myIntent, 0);
                 ((Activity) context).overridePendingTransition(0, 0);
             }}
         );
 
-        Button btAns2 = (Button) findViewById(R.id.btAns2);
+        Button btAns2 = (Button) findViewById(R.id.btAns3);
         btAns2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), QualificationsQuestionsActivity.class);
+                Intent myIntent = new Intent(view.getContext(), SuggestionsActivity.class);
                 startActivityForResult(myIntent, 0);
                 ((Activity) context).overridePendingTransition(0, 0);
             }}
         );
 
-        Button btAns3 = (Button) findViewById(R.id.btAns3);
+        Button btAns3 = (Button) findViewById(R.id.btAns2);
         btAns3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), QualificationsQuestionsActivity.class);
+                Intent myIntent = new Intent(view.getContext(), SuggestionsActivity.class);
                 startActivityForResult(myIntent, 0);
                 ((Activity) context).overridePendingTransition(0, 0);
             }}

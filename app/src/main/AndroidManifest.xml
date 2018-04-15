@@ -20,10 +20,12 @@
             android:name=".helpers.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.QualificationsQuestionsActivity"></activity>
-
-        <activity android:name=".activities.QuestionsIntroActivity"></activity>
-        <activity android:name=".activities.SuggestionsActivity"></activity>
+        <activity android:name=".activities.QualificationsQuestionsActivity" />
+        <activity android:name=".activities.QuestionsIntroActivity" />
+        <activity android:name=".activities.SuggestionsActivity" />
+        <activity android:name=".activities.JobSearchGuide" />
+        <activity android:name=".activities.HeadingOne" />
+        <activity android:name=".CategoryView"></activity>
     </application>
 
 </manifest>

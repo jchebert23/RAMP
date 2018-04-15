@@ -14,7 +14,7 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleTxt"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivIcon"
@@ -32,25 +32,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@android:color/darker_gray"
+        android:background="@color/btn1Bg"
         android:bottomRightRadius="10dp"
         android:paddingHorizontal="20dp"
         android:text="Less than a year"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textSize="16sp" />
-
-    <Button
-        android:id="@+id/btAns2"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btAns1"
-        android:layout_below="@+id/btAns1"
-        android:layout_marginTop="22dp"
-        android:background="@android:color/darker_gray"
-        android:bottomRightRadius="10dp"
-        android:paddingHorizontal="20dp"
-        android:text="About a year"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="16sp" />
 
@@ -59,10 +44,25 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="175dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btAns2"
-        android:layout_below="@+id/btAns2"
+        android:layout_alignStart="@+id/btAns1"
+        android:layout_below="@+id/btAns1"
+        android:layout_marginTop="22dp"
+        android:background="@color/btn1Bg"
+        android:bottomRightRadius="10dp"
+        android:paddingHorizontal="20dp"
+        android:text="About a year"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btAns2"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btAns3"
+        android:layout_below="@+id/btAns3"
         android:layout_marginTop="24dp"
-        android:background="@android:color/darker_gray"
+        android:background="@color/btn1Bg"
         android:bottomRightRadius="10dp"
         android:paddingHorizontal="20dp"
         android:text="More than a year"
