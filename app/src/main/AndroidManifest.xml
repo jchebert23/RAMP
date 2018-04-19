@@ -20,13 +20,13 @@
             android:name=".helpers.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HouseGuideActivity">
-
-        </activity>
-        <activity android:name=".activities.QualificationsQuestionsActivity"></activity>
-
-        <activity android:name=".activities.QuestionsIntroActivity"></activity>
-        <activity android:name=".activities.SuggestionsActivity"></activity>
+        <activity android:name=".activities.QualificationsQuestionsActivity" />
+        <activity android:name=".activities.QuestionsIntroActivity" />
+        <activity android:name=".activities.SuggestionsActivity" />
+        <activity android:name=".activities.JobSearchGuide" />
+        <activity android:name=".activities.HeadingOne" />
+        <activity android:name=".CategoryView"></activity>
+        <activity android:name=".HouseGuideActivity"></activity>
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_map_API_key" />
