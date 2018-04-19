@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivIcon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:lineSpacingExtra="12sp"
+        android:text="Heading One"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:text="Lots of randoom random random random text. I hope this randomness is random enough for you to get a sense of how random this random text is supposed to be. random + random is not as random as you might expect, although it would be twice as random blah blah hi there" />
+
+    />
+
+</RelativeLayout>
