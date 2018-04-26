@@ -2,6 +2,8 @@ package com.example.gabrielsaruhashi.ramp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,6 +66,15 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         SubCategory subcategory = subcategories.get(position);
         //populate the view with the category data
         holder.subCategoryTitle.setText(subcategory.getTitle());
+
+        int r = subcategory.getR();
+        int g = subcategory.getG();
+        int b = subcategory.getB();
+
+        //String hexColor
+        String hex = String.format("#%02x%02x%02x", r, g,b);
+
+        holder.subCategoryImage.setBackgroundColor(Color.parseColor(hex));
     }
 
     //return the size of the entire data set

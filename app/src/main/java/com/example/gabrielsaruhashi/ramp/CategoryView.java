@@ -10,13 +10,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
+import com.google.android.flexbox.AlignContent;
+import com.google.android.flexbox.AlignItems;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 
 import java.util.ArrayList;
 
 public class CategoryView extends AppCompatActivity {
 
-    public final static int NUMBER_OF_SUBCATEGORIES = 6;
-    public final static String[] SUBCATEGORIES_TITLES = {"A", "B", "C", "D", "E", "F"};
+    public final static int NUMBER_OF_SUBCATEGORIES = 7;
+    public final static String[] SUBCATEGORIES_TITLES = {"A", "B", "C", "D", "E", "F", "G"};
+    public final static int[] R_VALS = {0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+    public final static int[] G_VALS = {0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+    public final static int[] B_VALS = {0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
 
 
     //The array list that stores the categories
@@ -35,7 +43,10 @@ public class CategoryView extends AppCompatActivity {
         //initialize the adapter
         adapter = new SubCategoryAdapter(subcategories);
         rvSubcategories = (RecyclerView) findViewById(R.id.rvSubcategories);
-        rvSubcategories.setLayoutManager(new GridLayoutManager(this, 1));
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
+        layoutManager.setFlexDirection(FlexDirection.ROW);
+        layoutManager.setJustifyContent(JustifyContent.CENTER);
+        rvSubcategories.setLayoutManager(layoutManager);
         rvSubcategories.setAdapter(adapter);
 
 
@@ -73,7 +84,7 @@ public class CategoryView extends AppCompatActivity {
     //get the list of current objects
     private void getCurrentCategories() {
         for(int i = 0; i < NUMBER_OF_SUBCATEGORIES; i++){
-            SubCategory subcategory = new SubCategory(SUBCATEGORIES_TITLES[i], "", null);
+            SubCategory subcategory = new SubCategory(SUBCATEGORIES_TITLES[i], "", R_VALS[0], G_VALS[0], B_VALS[0],null);
             subcategories.add(subcategory);
             adapter.notifyItemInserted(subcategories.size() - 1);
         }
