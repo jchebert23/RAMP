@@ -15,15 +15,54 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/top_margin"
-        android:text="How are you feeling?" />
+        android:text="Eating Disorders" />
+
+    <LinearLayout
+        android:id="@+id/llBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below = "@+id/SubCategoryTitle"
+        android:backgroundTint="#D5EAFE"
+        android:minHeight="50dp"
+        android:background="#D5EAFE">
+
+        <TextView
+            android:id= "@+id/tvStartReading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_header"
+            android:fontFamily="sans-serif-condensed"
+            android:text = "Conquering Eating Disorders"
+            android:gravity="center_horizontal"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBanner2"
+        android:layout_below="@+id/llBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="50dp">
+        <TextView
+            android:id="@+id/tvOtherCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:layout_weight="1"
+            android:textSize="@dimen/font_header"
+            android:gravity="center"
+            android:text="Other Resources:"
+            />
+    </LinearLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvSubCategories"
-
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/SubCategoryTitle"
-        android:layout_marginTop="@dimen/top_margin" />
+        android:layout_below="@+id/llBanner2"
+        />
 
 </RelativeLayout>

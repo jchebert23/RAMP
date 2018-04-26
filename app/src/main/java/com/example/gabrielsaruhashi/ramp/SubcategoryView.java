@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.gabrielsaruhashi.ramp.models.Guide;
+import com.example.gabrielsaruhashi.ramp.models.Section;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
 import java.util.ArrayList;
@@ -18,14 +20,21 @@ import java.util.ArrayList;
 public class SubcategoryView extends AppCompatActivity {
 
     //public final static int NUMBER_OF_CATEGORIES = 6;
-    public final static ArrayList<String> GUIDE_DESCRIPTIONS = new ArrayList<String>(){
+    public final static ArrayList<Guide> GUIDE_DESCRIPTIONS = new ArrayList<Guide>(){
         {
-            add("Guide 1");
-            add("Guide 2");
-            add("Guide 3");
-            add("Guide 4");
-            add("Guide 5");
-            add("Guide 6");
+            ArrayList<Section> dummyList= new ArrayList<Section>();
+            Guide first = new Guide("Name 1", "Content 1", dummyList);
+            Guide second = new Guide("Name 2", "Content 2", dummyList);
+            Guide third = new Guide("Name 3", "Content 3", dummyList);
+            Guide fourth = new Guide("Name 4", "Content 4", dummyList);
+            Guide fifth = new Guide("Name 5", "Content 5", dummyList);
+            Guide sixth = new Guide("Name 6", "Content 6", dummyList);
+            add(first);
+            add(second);
+            add(third);
+            add(fourth);
+            add(fifth);
+            add(sixth);
         }
     };
 
@@ -33,7 +42,7 @@ public class SubcategoryView extends AppCompatActivity {
 
 
     //The array list that stores the guides
-    ArrayList<String> guides;
+    ArrayList<Guide> guides;
 
     RecyclerView rvSubCategories;
     GuideAdapter adapter;
@@ -43,10 +52,11 @@ public class SubcategoryView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategoryview);
 
-
         guides = dummySubCategory.getGuides();
         Log.e("Error", guides.toString());
         //initialize the adapter
+
+
         adapter = new GuideAdapter(guides);
 
         rvSubCategories = (RecyclerView) findViewById(R.id.rvSubCategories);
@@ -55,7 +65,7 @@ public class SubcategoryView extends AppCompatActivity {
 
 
         TextView generalTitle = findViewById(R.id.SubCategoryTitle);
-        generalTitle.setText("DEODEODKE");
+        generalTitle.setText("Eating Disorders");
 
 
 
@@ -94,8 +104,8 @@ public class SubcategoryView extends AppCompatActivity {
     //get the list of current objects
     private void getCurrentCategories(){
         for(int i = 0; i < GUIDE_DESCRIPTIONS.size(); i++){
-            String guide = GUIDE_DESCRIPTIONS.get(i);
-            Log.e("GUIDE", guide);
+            Guide guide = GUIDE_DESCRIPTIONS.get(i);
+            Log.e("GUIDE", guide.getName());
             guides.add(guide);
             //adapter.notifyItemInserted(guides.size() - 1);
 

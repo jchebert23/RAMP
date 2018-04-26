@@ -10,10 +10,10 @@ import java.util.ArrayList;
 public class SubCategory {
     String title;
     String catchPhrase;
-    ArrayList<String> guides;
+    ArrayList<Guide> guides;
 
 
-    public SubCategory(String title, String catchPhrase, ArrayList<String> guides) {
+    public SubCategory(String title, String catchPhrase, ArrayList<Guide> guides) {
         this.title = title;
         this.catchPhrase = catchPhrase;
         this.guides = guides;
@@ -27,7 +27,7 @@ public class SubCategory {
         return catchPhrase;
     }
 
-    public ArrayList<String> getGuides() {
+    public ArrayList<Guide> getGuides() {
         return guides;
     }
 }

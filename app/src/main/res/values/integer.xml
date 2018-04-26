@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="subCategoryStartR"> 166 </integer>
+    <integer name="subCategoryStartG"> 201 </integer>
+    <integer name="subCategoryStartB"> 234 </integer>
+    <integer name="subCategoryDiffR"> 25 </integer>
+    <integer name="subCategoryDiffG"> 30 </integer>
+    <integer name="subCategoryDiffB"> 35 </integer>
+</resources>

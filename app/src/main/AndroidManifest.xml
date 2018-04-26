@@ -12,11 +12,7 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".helpers.BaseActivity"
@@ -39,7 +35,13 @@
         <meta-data android:name="com.google.android.maps.v2.API_KEY"
             android:value="@string/google_map_API_key" />
 
-        <activity android:name=".SubcategoryView"></activity>
+        <activity android:name=".SubcategoryView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

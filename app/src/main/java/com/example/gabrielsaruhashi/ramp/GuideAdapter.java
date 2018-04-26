@@ -2,13 +2,18 @@ package com.example.gabrielsaruhashi.ramp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.activities.QuestionsIntroActivity;
+import com.example.gabrielsaruhashi.ramp.models.Guide;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
 import java.util.ArrayList;
@@ -18,12 +23,13 @@ import java.util.ArrayList;
  */
 
 public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> {
-    ArrayList<String> guides;
+    ArrayList<Guide> guides;
 
-    public GuideAdapter(ArrayList<String> guides) {
+    public GuideAdapter(ArrayList<Guide> guides) {
         this.guides = guides;
     }
 
+    int color;
     //Creates a new view
     @Override
     public GuideAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -32,6 +38,7 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
         //create the view using the item_movie layout
         View subCategoryView = inflater.inflate(R.layout.item_guide, parent, false);
 
+        //color = context.getString(R.integer.subCategoryDiffR)
         subCategoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,9 +54,23 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(GuideAdapter.ViewHolder holder, int position) {
         //get the movie data at the specified position
-        String guide = guides.get(position);
+        Guide guide = guides.get(position);
         //populate the view with the category data
-        holder.TvGeneralTitle.setText(guide);
+        String title = guide.getName();
+        holder.TvGeneralTitle.setText(title);
+
+        //int color = ContextCompat.getColor(R.color.);
+        //int color_rgb =
+        int r = 166 - 25 * position;
+        int g = 201 - 30 * position;
+        int b = 234 - 35 * position;
+
+        //String hexColor
+        String hex = String.format("#%02x%02x%02x", r, g,b);
+
+        holder.llBanner.setBackgroundColor(Color.parseColor(hex));
+        //.setBackground(backgroundColor);
+        //holder.set
     }
 
     //return the size of the entire data set
@@ -63,10 +84,12 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
 
         //track view objects
         TextView TvGeneralTitle;
+        LinearLayout llBanner;
 
         public ViewHolder(View itemView) {
             super(itemView);
             TvGeneralTitle = itemView.findViewById(R.id.generalTitle);
+            llBanner = itemView.findViewById(R.id.llBanner);
         }
     }
 }
