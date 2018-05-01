@@ -23,6 +23,7 @@ public class SubcategoryView extends AppCompatActivity {
     public final static ArrayList<Guide> GUIDE_DESCRIPTIONS = new ArrayList<Guide>(){
         {
             ArrayList<Section> dummyList= new ArrayList<Section>();
+
             Guide first = new Guide("Name 1", "Content 1", dummyList);
             Guide second = new Guide("Name 2", "Content 2", dummyList);
             Guide third = new Guide("Name 3", "Content 3", dummyList);

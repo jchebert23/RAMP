@@ -26,7 +26,6 @@
         <activity android:name=".HouseGuideActivity"></activity>
         <activity android:name=".activities.QualificationsQuestionsActivity" />
         <activity android:name=".activities.QuestionsIntroActivity" />
-        <activity android:name=".activities.SuggestionsActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
