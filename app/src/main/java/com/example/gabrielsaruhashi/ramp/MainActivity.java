@@ -1,13 +1,10 @@
 package com.example.gabrielsaruhashi.ramp;
 
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.example.gabrielsaruhashi.ramp.models.Category;
 
@@ -26,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     //track adapter and recycle view
     RecyclerView rvCategories;
     CategoryAdapter adapter;
+    SearchView svSearchview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,17 +37,23 @@ public class MainActivity extends AppCompatActivity {
         rvCategories = (RecyclerView) findViewById(R.id.rvCategories);
         rvCategories.setLayoutManager(new GridLayoutManager(this, 2));
         rvCategories.setAdapter(adapter);
+        // get reference to searchview
+        svSearchview = (SearchView) findViewById(R.id.svSearchbar);
+        svSearchview.setQueryHint("What are you looking for?"); // set the hint text to display in the query text field
+        svSearchview.setIconifiedByDefault(false);  // set the default or resting state of the search field
+
 
 
         getCurrentCategories();
     }
 
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_category_list, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        final android.support.v7.widget.SearchView searchView = (Sear) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         });
         return super.onCreateOptionsMenu(menu);
 
-    }
+    } */
 
 
     //get the list of current objects
