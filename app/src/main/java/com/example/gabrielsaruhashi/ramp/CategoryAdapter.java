@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.gabrielsaruhashi.ramp.activities.QuestionsIntroActivity;
 import com.example.gabrielsaruhashi.ramp.models.Category;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
     ArrayList<Category> categories;
-
+    Context context;
     public CategoryAdapter(ArrayList<Category> categories) {
         this.categories = categories;
     }
@@ -29,10 +30,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     //Creates a new view
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final Context context = parent.getContext();
+        context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         //create the view using the item_movie layout
         View categoryView = inflater.inflate(R.layout.item_movie, parent, false);
+
 
         categoryView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Category category = categories.get(position);
         //populate the view with the category data
         holder.categoryTitle.setText(category.getStatus());
+
+        Glide.with(context)
+                .load(category.getCategory_image())
+                .into(holder.categoryImage);
     }
 
     //return the size of the entire data set

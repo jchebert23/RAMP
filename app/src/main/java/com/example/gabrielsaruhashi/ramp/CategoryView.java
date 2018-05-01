@@ -1,20 +1,15 @@
 package com.example.gabrielsaruhashi.ramp;
 
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
-import com.google.android.flexbox.AlignContent;
-import com.google.android.flexbox.AlignItems;
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
 
 import java.util.ArrayList;
 
@@ -43,10 +38,12 @@ public class CategoryView extends AppCompatActivity {
         //initialize the adapter
         adapter = new SubCategoryAdapter(subcategories);
         rvSubcategories = (RecyclerView) findViewById(R.id.rvSubcategories);
-        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
+        /*FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
         layoutManager.setFlexDirection(FlexDirection.ROW);
         layoutManager.setJustifyContent(JustifyContent.CENTER);
-        rvSubcategories.setLayoutManager(layoutManager);
+        layoutManager.setFlexWrap(FlexWrap.WRAP);
+        rvSubcategories.setLayoutManager(layoutManager); */
+        rvSubcategories.setLayoutManager(new LinearLayoutManager(this));
         rvSubcategories.setAdapter(adapter);
 
 
@@ -86,7 +83,7 @@ public class CategoryView extends AppCompatActivity {
         for(int i = 0; i < NUMBER_OF_SUBCATEGORIES; i++){
             SubCategory subcategory = new SubCategory(SUBCATEGORIES_TITLES[i], "", R_VALS[0], G_VALS[0], B_VALS[0],null);
             subcategories.add(subcategory);
-            adapter.notifyItemInserted(subcategories.size() - 1);
+            //adapter.notifyItemInserted(subcategories.size() - 1);
         }
     }
 }

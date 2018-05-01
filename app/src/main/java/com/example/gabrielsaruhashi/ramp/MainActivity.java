@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     public final static int NUMBER_OF_CATEGORIES = 6;
     public final static String[] CATEGORIES_DESCRIPTIONS = {"I need a job.", "I'm hungry.", "I need a doctor.", "I need housing.", "I need the weather.", "I need a lawyer."};
 
+    public final static int[] CATEGORIES_IMAGES = {R.drawable.ic_mental_category, R.drawable.ic_law_category, R.drawable.ic_mental_category, R.drawable.ic_law_category, R.drawable.ic_mental_category, R.drawable.ic_law_category};
     //The array list that stores the categories
     ArrayList<Category> categories;
 
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     //get the list of current objects
     private void getCurrentCategories(){
         for(int i = 0; i < NUMBER_OF_CATEGORIES; i++){
-            Category category = new Category(CATEGORIES_DESCRIPTIONS[i], "");
+            Category category = new Category(CATEGORIES_DESCRIPTIONS[i], CATEGORIES_IMAGES[i]);
             categories.add(category);
             adapter.notifyItemInserted(categories.size() - 1);
         }

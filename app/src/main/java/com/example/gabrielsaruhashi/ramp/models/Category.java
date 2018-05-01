@@ -13,21 +13,23 @@ public class Category {
     private String statusImagePath;
     private ArrayList<SubCategory> subcategories;
     private ArrayList<Resources> icons;
+    private int category_image;
 
     public Category(){
         super();
     }
 
-    public Category(String status, String statusImagePath, ArrayList<SubCategory> subcategories, ArrayList<Resources> icons) {
+    public Category(String status, String statusImagePath, ArrayList<SubCategory> subcategories, ArrayList<Resources> icons, int category_image) {
         this.status = status;
         this.statusImagePath = statusImagePath;
         this.subcategories = subcategories;
         this.icons = icons;
+        this.category_image = category_image;
     }
 
-    public Category(String status, String statusImagePath) {
+    public Category(String status, int category_image) {
         this.status = status;
-        this.statusImagePath = statusImagePath;
+        this.category_image = category_image;
     }
 
     public String getStatus() {
@@ -60,5 +62,13 @@ public class Category {
 
     public void setIcons(ArrayList<Resources> icons) {
         this.icons = icons;
+    }
+
+    public int getCategory_image() {
+        return category_image;
+    }
+
+    public void setCategory_image(int category_image) {
+        this.category_image = category_image;
     }
 }
