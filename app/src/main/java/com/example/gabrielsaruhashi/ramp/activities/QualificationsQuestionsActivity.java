@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.gabrielsaruhashi.ramp.CategoryView;
 import com.example.gabrielsaruhashi.ramp.R;
 
 /**
@@ -25,7 +26,7 @@ public class QualificationsQuestionsActivity extends AppCompatActivity {
         Button btAns1 = (Button) findViewById(R.id.btAns1);
         btAns1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), SuggestionsActivity.class);
+                Intent myIntent = new Intent(view.getContext(), CategoryView.class);
                 startActivityForResult(myIntent, 0);
                 ((Activity) context).overridePendingTransition(0, 0);
             }}
@@ -34,7 +35,7 @@ public class QualificationsQuestionsActivity extends AppCompatActivity {
         Button btAns2 = (Button) findViewById(R.id.btAns3);
         btAns2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), SuggestionsActivity.class);
+                Intent myIntent = new Intent(view.getContext(), CategoryView.class);
                 startActivityForResult(myIntent, 0);
                 ((Activity) context).overridePendingTransition(0, 0);
             }}
@@ -43,7 +44,7 @@ public class QualificationsQuestionsActivity extends AppCompatActivity {
         Button btAns3 = (Button) findViewById(R.id.btAns2);
         btAns3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), SuggestionsActivity.class);
+                Intent myIntent = new Intent(view.getContext(), CategoryView.class);
                 startActivityForResult(myIntent, 0);
                 ((Activity) context).overridePendingTransition(0, 0);
             }}

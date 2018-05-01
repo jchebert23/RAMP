@@ -13,9 +13,15 @@ public class SubCategory {
     ArrayList<Guide> guides;
 
 
-    public SubCategory(String title, String catchPhrase, ArrayList<Guide> guides) {
+    int r, g, b;
+
+
+    public SubCategory(String title, String catchPhrase, int r, int g, int b, ArrayList<Guide> guides) {
         this.title = title;
         this.catchPhrase = catchPhrase;
+        this.r = r ;
+        this.g = g;
+        this.b = b;
         this.guides = guides;
     }
 
@@ -30,5 +36,11 @@ public class SubCategory {
     public ArrayList<Guide> getGuides() {
         return guides;
     }
+
+    public int getR() { return r; }
+
+    public int getG() { return g; }
+
+    public int getB() { return b; }
 }
 
