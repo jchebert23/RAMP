@@ -3,13 +3,16 @@ package com.example.gabrielsaruhashi.ramp;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 
 import java.util.ArrayList;
 
@@ -38,12 +41,11 @@ public class CategoryView extends AppCompatActivity {
         //initialize the adapter
         adapter = new SubCategoryAdapter(subcategories);
         rvSubcategories = (RecyclerView) findViewById(R.id.rvSubcategories);
-        /*FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
+        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(this);
         layoutManager.setFlexDirection(FlexDirection.ROW);
         layoutManager.setJustifyContent(JustifyContent.CENTER);
         layoutManager.setFlexWrap(FlexWrap.WRAP);
-        rvSubcategories.setLayoutManager(layoutManager); */
-        rvSubcategories.setLayoutManager(new LinearLayoutManager(this));
+        rvSubcategories.setLayoutManager(layoutManager);
         rvSubcategories.setAdapter(adapter);
 
 
