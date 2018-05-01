@@ -9,12 +9,16 @@ import java.util.ArrayList;
 public class SubCategory {
     String title;
     String catchPhrase;
+    int r, g, b;
     ArrayList<String> guides;
 
 
-    public SubCategory(String title, String catchPhrase, ArrayList<String> guides) {
+    public SubCategory(String title, String catchPhrase, int r, int g, int b, ArrayList<String> guides) {
         this.title = title;
         this.catchPhrase = catchPhrase;
+        this.r = r ;
+        this.g = g;
+        this.b = b;
         this.guides = guides;
     }
 
@@ -29,5 +33,11 @@ public class SubCategory {
     public ArrayList<String> getGuides() {
         return guides;
     }
+
+    public int getR() { return r; }
+
+    public int getG() { return g; }
+
+    public int getB() { return b; }
 }
 
