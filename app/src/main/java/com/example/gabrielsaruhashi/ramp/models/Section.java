@@ -5,20 +5,20 @@ package com.example.gabrielsaruhashi.ramp.models;
  */
 
 public class Section {
-    private String name;
+    private String title;
     private String contents;
 
-    public Section(String name, String contents) {
-        this.name = name;
+    public Section(String title, String contents) {
+        this.title = title;
         this.contents = contents;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String title) {
+        this.title = title;
     }
 
     public String getContents() {

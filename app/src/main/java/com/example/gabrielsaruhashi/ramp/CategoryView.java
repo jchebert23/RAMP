@@ -1,5 +1,8 @@
 package com.example.gabrielsaruhashi.ramp;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +10,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.gabrielsaruhashi.ramp.activities.GuideIndex;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexWrap;
@@ -36,6 +42,16 @@ public class CategoryView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category_view);
+
+        final Context context = this;
+        Button button = (Button) findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), GuideIndex.class);
+                startActivityForResult(myIntent, 0);
+                ((Activity) context).overridePendingTransition(0, 0);
+            }}
+        );
 
         subcategories = new ArrayList<>();
         //initialize the adapter
