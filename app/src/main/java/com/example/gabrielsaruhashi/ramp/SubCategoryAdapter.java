@@ -29,7 +29,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        //create the view using the item_movie layout
+        //create the view using the item_category layout
         View categoryView = inflater.inflate(R.layout.item_subcategory, parent, false);
 
         /*categoryView.setOnClickListener(new View.OnClickListener() {
