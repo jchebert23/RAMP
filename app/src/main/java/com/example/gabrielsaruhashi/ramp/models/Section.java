@@ -7,10 +7,12 @@ package com.example.gabrielsaruhashi.ramp.models;
 public class Section {
     private String title;
     private String contents;
+    private int number;
 
-    public Section(String title, String contents) {
+    public Section(String title, String contents, int number) {
         this.title = title;
         this.contents = contents;
+        this.number = number;
     }
 
     public String getTitle() {
@@ -20,6 +22,10 @@ public class Section {
     public void setName(String title) {
         this.title = title;
     }
+
+    public void setNumber(int n) { this.number = n; }
+
+    public int getNumber() { return number; }
 
     public String getContents() {
         return contents;

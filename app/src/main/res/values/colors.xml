@@ -8,6 +8,9 @@
     <color name="btn3Bg">#eeeeee</color>
     <color name="startBtn">#33b32c</color>
     <color name="material_brown">#3E2723</color>
+    <color name="light_background">#FEFAF7</color>
+    <color name="material_grey">#BDBDBD</color>
+
 
 
 </resources>
