@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.gabrielsaruhashi.ramp">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,7 +18,16 @@
             android:name=".helpers.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HouseGuideActivity"></activity>
+        <activity android:name=".HouseGuideActivity">
+
+        </activity>
+        <activity android:name=".activities.TGuideListMapActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".activities.QualificationsQuestionsActivity" />
         <activity android:name=".activities.QuestionsIntroActivity" />
         <activity android:name=".activities.SuggestionsActivity" />
@@ -36,11 +45,6 @@
             android:value="@string/google_map_API_key" />
 
         <activity android:name=".SubcategoryView">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -1,0 +1,286 @@
+{
+  "results": [
+    {
+      "program_site": {
+        "id": 54428589,
+        "direct_211_link": "https://www.211ct.org/search/54428589",
+        "taxonomies": [
+          {
+            "code": "LH-4600",
+            "name": "Long Term Care Options Counseling",
+            "category": "Health Supportive Services"
+          }
+        ],
+        "program": {
+          "id": 47734488,
+          "name": "Care Through Community Partners",
+          "description": "Health Care and service professionals provide support and referrals to individuals looking for resources in the community to assist residents and their families, with long term care options and supports.  Services include, one-on-one help locating resources, access to referrals and supports, and help navigating the community long term care system in Connecticut.",
+          "conflict_of_interest": "Yes",
+          "conflict_details": "Our organization, agency or entity may offer, recommend or encourage long term-services and supports such as home care or nursing home care that we provide",
+          "walk_ins_accepted": null
+        },
+        "address": {
+          "address_1": "462 Queen Street",
+          "address_2": "Suite 101",
+          "city": "Southington",
+          "state": "CT",
+          "zip": "06489",
+          "coords": [
+            -72.874957,
+            41.6289795
+          ]
+        },
+        "eligibility": "Older adults and persons with disabilities, their families and legal representatives",
+        "documents_required": "",
+        "phones": {
+          "phone_1": "860-276-5293",
+          "phone_2": "",
+          "toll_free": ""
+        },
+        "hours": null,
+        "website": "www.cthealthyaging.org",
+        "languages": null,
+        "application_process": "Appointment preferred",
+        "disabilities_access": null,
+        "bus_service_access": null,
+        "agency": {
+          "id": 17266953,
+          "name": "HOSPITAL OF CENTRAL CONNECTICUT THE - BRADLEY MEMORIAL CAMPUS",
+          "description": "General hospital offers inpatient and outpatient medical services, support groups, wellness programs, and Connecticut Center for Healthy Aging.<br /><br /><br /><br />PARENT AGENCY<br />Hartford HealthCare<br />",
+          "last_verified_on": "2017-09-14",
+          "physical_address": {
+            "physical_street_1": "81 Meriden Avenue",
+            "physical_street_2": null,
+            "physical_city": "Southington",
+            "physical_state": "CT",
+            "physical_zip": "06489"
+          },
+          "mailing_address": {
+            "mailing_street_1": null,
+            "mailing_street_2": null,
+            "mailing_city": null,
+            "mailing_state": null,
+            "mailing_zip": null
+          },
+          "disabilities_access": "Handicap parking available, Handicap accessible bathrooms, Wheelchair accessible",
+          "legal_status": "Nonprofit - Incorporated",
+          "conflict_of_interest": null,
+          "partner_levels": null,
+          "certification_levels": null
+        }
+      }
+    },
+    {
+      "program_site": {
+        "id": 47734883,
+        "direct_211_link": "https://www.211ct.org/search/47734883",
+        "taxonomies": [
+          {
+            "code": "LH-4600",
+            "name": "Long Term Care Options Counseling",
+            "category": "Health Supportive Services"
+          }
+        ],
+        "program": {
+          "id": 47734880,
+          "name": "Care Through Community Partners",
+          "description": "Health Care and service professionals provide support and referrals to individuals looking for resources in the community to assist residents and their families, with long term care options and supports.  Services include, one-on-one help locating resources, access to referrals and supports, and help navigating the community long term care system in Connecticut.",
+          "conflict_of_interest": "No",
+          "conflict_details": null,
+          "walk_ins_accepted": null
+        },
+        "address": {
+          "address_1": "1183 New Haven Road, Suite 200",
+          "city": "Naugatuck",
+          "state": "CT",
+          "zip": "06770",
+          "coords": [
+            -73.0241061,
+            41.4680712
+          ]
+        },
+        "eligibility": "Older adults and all persons with disabilities, their families and legal representatives",
+        "documents_required": "",
+        "phones": {
+          "phone_1": "203-729-3299",
+          "phone_2": "",
+          "toll_free": ""
+        },
+        "hours": "M-F: 8am-5pm",
+        "website": "www.independencenorthwest.org",
+        "languages": null,
+        "application_process": "Appointment  preferred",
+        "disabilities_access": null,
+        "bus_service_access": null,
+        "agency": {
+          "id": 17265896,
+          "name": "INDEPENDENCE NORTHWEST: CENTER FOR INDEPENDENT LIVING OF NORTHWEST CONNECTICUT, INC.",
+          "description": "Regional, non-residential independent living and disability rights center offers resources, support services and advocacy for people with disabilities.  The center serves a cross-disability population including people with physical, cognitive, mental health, visual and hearing disabilities as well as people with multiple disabilities and people living with HIV/AIDS.  Services are available to people of all ages.",
+          "last_verified_on": "2017-12-23",
+          "physical_address": {
+            "physical_street_1": "1183 New Haven Road, Suite 200",
+            "physical_street_2": null,
+            "physical_city": "Naugatuck",
+            "physical_state": "CT",
+            "physical_zip": "06770"
+          },
+          "mailing_address": {
+            "mailing_street_1": null,
+            "mailing_street_2": null,
+            "mailing_city": null,
+            "mailing_state": null,
+            "mailing_zip": null
+          },
+          "disabilities_access": "Handicap parking available, Wheelchair accessible, Handicap accessible bathrooms, Ramps, ADA Compliant",
+          "legal_status": "Nonprofit - Incorporated",
+          "conflict_of_interest": null,
+          "partner_levels": null,
+          "certification_levels": null
+        }
+      }
+    },
+    {
+      "program_site": {
+        "id": 54428593,
+        "direct_211_link": "https://www.211ct.org/search/54428593",
+        "taxonomies": [
+          {
+            "code": "LH-4600",
+            "name": "Long Term Care Options Counseling",
+            "category": "Health Supportive Services"
+          }
+        ],
+        "program": {
+          "id": 54428591,
+          "name": "Care Through Community Partners",
+          "description": "Health Care and service professionals provide support and referrals to individuals looking for resources in the community to assist residents and their families, with long term care options and supports.  Services include, one-on-one help locating resources, access to referrals and supports, and help navigating the community long term care system in Connecticut.",
+          "conflict_of_interest": "No",
+          "conflict_details": null,
+          "walk_ins_accepted": null
+        },
+        "address": {
+          "address_1": "104 Notch Road",
+          "city": "Bolton",
+          "state": "CT",
+          "zip": "06043",
+          "coords": [
+            -72.4421351,
+            41.7761391
+          ]
+        },
+        "eligibility": "Senior Center: 55+/disabled; Social Services: all ages",
+        "documents_required": "",
+        "phones": {
+          "phone_1": "860-647-9196",
+          "phone_2": "",
+          "toll_free": ""
+        },
+        "hours": "M-Th: 9am-4pm; F: 9am-3pm",
+        "website": "www.bolton.govoffice.com/",
+        "languages": null,
+        "application_process": "Appointments preferred",
+        "disabilities_access": null,
+        "bus_service_access": null,
+        "agency": {
+          "id": 17267704,
+          "name": "BOLTON, TOWN OF",
+          "description": "Municipal government administers selected public services for residents.",
+          "last_verified_on": "2018-04-05",
+          "physical_address": {
+            "physical_street_1": "222 Bolton Center Road",
+            "physical_street_2": null,
+            "physical_city": "Bolton",
+            "physical_state": "CT",
+            "physical_zip": "06043"
+          },
+          "mailing_address": {
+            "mailing_street_1": null,
+            "mailing_street_2": null,
+            "mailing_city": null,
+            "mailing_state": null,
+            "mailing_zip": null
+          },
+          "disabilities_access": "Handicap parking available",
+          "legal_status": "Government - Town",
+          "conflict_of_interest": null,
+          "partner_levels": null,
+          "certification_levels": null
+        }
+      }
+    },
+    {
+      "program_site": {
+        "id": 54428631,
+        "direct_211_link": "https://www.211ct.org/search/54428631",
+        "taxonomies": [
+          {
+            "code": "LH-4600",
+            "name": "Long Term Care Options Counseling",
+            "category": "Health Supportive Services"
+          }
+        ],
+        "program": {
+          "id": 54428608,
+          "name": "Care Through Community Partners",
+          "description": "Health Care and service professionals provide support and referrals to individuals looking for resources in the community to assist residents and their families, with long term care options and supports.  Services include, one-on-one help locating resources, access to referrals and supports, and help navigating the community long term care system in Connecticut.",
+          "conflict_of_interest": "No",
+          "conflict_details": null,
+          "walk_ins_accepted": null
+        },
+        "address": {
+          "address_1": "15 Berkshire Road",
+          "city": "Sandy Hook",
+          "state": "CT",
+          "zip": "06482",
+          "coords": [
+            -73.2728401,
+            41.413209
+          ]
+        },
+        "eligibility": "Older adults and individuals with disabilities of all ages ",
+        "documents_required": "",
+        "phones": {
+          "phone_1": "203-270-4335",
+          "phone_2": "",
+          "toll_free": ""
+        },
+        "hours": "M-Th: 9am-8pm; F: 9am-5pm; Sat: 8am-1pm",
+        "website": "www.newtownyouthandfamilyservices.org",
+        "languages": "Spanish",
+        "application_process": "Call for more information",
+        "disabilities_access": null,
+        "bus_service_access": null,
+        "agency": {
+          "id": 17271917,
+          "name": "NEWTOWN YOUTH AND FAMILY SERVICES",
+          "description": "Youth service bureau for Newtown offers programs for youth including counseling, workshops, job bank, support groups and youth enrichment activities.  NYFS also offers individual, marriage and family counseling, children's play therapy, group counseling, support groups, psychiatric assessments, and educational workshops.",
+          "last_verified_on": "2018-01-18",
+          "physical_address": {
+            "physical_street_1": "15 Berkshire Road",
+            "physical_street_2": null,
+            "physical_city": "Sandy Hook",
+            "physical_state": "CT",
+            "physical_zip": "06482"
+          },
+          "mailing_address": {
+            "mailing_street_1": null,
+            "mailing_street_2": null,
+            "mailing_city": null,
+            "mailing_state": null,
+            "mailing_zip": null
+          },
+          "disabilities_access": "Handicap parking available, Wheelchair accessible",
+          "legal_status": "Nonprofit - Incorporated",
+          "conflict_of_interest": null,
+          "partner_levels": null,
+          "certification_levels": null
+        }
+      }
+    }
+  ],
+  "page": 1,
+  "total_results": 4,
+  "service_area": "bolton",
+  "search_criteria": "Long Term Care Options Counseling",
+  "api_version": "1.0"
+}
