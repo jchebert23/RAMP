@@ -2,21 +2,6 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-    <!--<TextView-->
-        <!--android:id="@+id/sectionTitleView"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:fontFamily="@font/roboto"-->
-        <!--android:text="TextView"-->
-        <!--android:textAlignment="center"-->
-        <!--android:textAppearance="@style/TextAppearance.AppCompat.Title"-->
-        <!--android:textColor="@color/material_brown"-->
-        <!--android:textStyle="bold" />-->
-
     <TextView
         android:id="@+id/sectionContentView"
         android:layout_width="wrap_content"
@@ -28,5 +13,4 @@
         android:text="TextView"
         android:textColor="@color/material_brown"
         android:textSize="18sp" />
-
 </RelativeLayout>

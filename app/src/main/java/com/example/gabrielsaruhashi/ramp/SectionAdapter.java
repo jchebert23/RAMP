@@ -78,11 +78,6 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
                 intent.putExtra("sectionTitle", section.getTitle());
                 intent.putExtra("sectionContent", section.getContents());
                 intent.putExtra("sectionNumber", section.getNumber());
-                // start the activity
-                // do we need this?
-
-//                startActivityForResult(myIntent, 0);
-//                ((Activity) context).overridePendingTransition(0, 0);
                 context.startActivity(intent);
                 Log.d("SectionAdapter", "launched guide view activity");
             }

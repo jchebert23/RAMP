@@ -6,15 +6,6 @@
     android:background="@color/light_background"
     android:layout_height="match_parent">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/ivIcon"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginTop="75dp"-->
-        <!--app:srcCompat="@mipmap/ic_launcher" />-->
-
-
     <TextView
         android:id="@+id/titleTxt"
         android:layout_width="220dp"
@@ -58,16 +49,5 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tvContents"
         android:layout_marginTop="40dp" />
-
-    <!--<Button-->
-        <!--android:id="@+id/startBtn"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_marginBottom="50dp"-->
-        <!--android:background="@color/startBtn"-->
-        <!--android:paddingHorizontal="15dp"-->
-        <!--android:text="Start Reading" />-->
 
 </RelativeLayout>

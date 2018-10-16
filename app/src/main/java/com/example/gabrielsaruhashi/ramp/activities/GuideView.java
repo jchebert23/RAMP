@@ -44,28 +44,16 @@ public class GuideView extends AppCompatActivity {
     int currentSection;
     TextView tvNumber;
     TextView tvSectionTitle;
-//
-//    RecyclerView rvSections;
-//    SectionContentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        sections = new ArrayList<>();
-//        adapter = new SectionContentAdapter(sections);
-//        rvSections = (RecyclerView) findViewById(R.id.rvGuide);
-//        rvSections.setLayoutManager(new GridLayoutManager(this, 1));
-//        rvSections.setAdapter(adapter);
-//
-//        getCurrentCategories();
         makeSectionList();
 
         // Begin the transaction
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-//// Replace the contents of the container with the new fragment
+        // Replace the contents of the container with the new fragment
         currentSection = getIntent().getIntExtra("sectionNumber", 0);
-        Log.d("GuideView", "current section: " + currentSection);
         SectionFragment section = SectionFragment.newInstance(currentSection, getIntent().getStringExtra("sectionName"));
                 // pass in title, body
         ft.replace(R.id.placeholder, section).commit();
@@ -115,10 +103,8 @@ public class GuideView extends AppCompatActivity {
         FragmentTransaction newft = getSupportFragmentManager().beginTransaction();
         newft.setCustomAnimations(R.anim.slides,
                 R.anim.slides_out);
-        Log.d("GuideView", "current section: " + currentSection);
         if (currentSection < NUMBER_OF_SECTIONS - 1) {
             // if not last section, move to the next one
-            Log.d("GuideView", "moving to next section");
             SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection + 1).getNumber(), sectionList.get(currentSection + 1).getTitle());
             currentSection++;
             newft.replace(R.id.placeholder, sectionFragment).commit();
@@ -139,7 +125,6 @@ public class GuideView extends AppCompatActivity {
         Log.d("GuideView", "current section: " + currentSection);
         if (currentSection > 0) {
             // if not first section, move to previous one
-            Log.d("GuideView", "moving to next section");
             SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection - 1).getNumber(), sectionList.get(currentSection - 1).getTitle());
             currentSection--;
             backFt.replace(R.id.placeholder, sectionFragment).commit();

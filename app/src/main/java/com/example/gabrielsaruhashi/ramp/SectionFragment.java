@@ -87,11 +87,6 @@ public class SectionFragment extends Fragment {
         Section section = new Section(SECTION_TITLES[sectionNum], SECTION_CONTENT[sectionNum], sectionNum);
         sections.add(section);
         adapter.notifyItemInserted(0);
-//        for(int i = 0; i < NUMBER_OF_SECTIONS; i++){
-//            Section section = new Section(SECTION_TITLES[i], SECTION_CONTENT[i], i);
-//            sections.add(section);
-//            adapter.notifyItemInserted(sections.size() - 1);
-//        }
     }
 
 }

@@ -43,7 +43,6 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
         public ViewHolder(final View itemView) {
             super(itemView);
             //lookup view objects by id
-            // sectionTitle = itemView.findViewById(R.id.sectionTitleView);
             sectionContent = itemView.findViewById(R.id.sectionContentView);
         }
     }
@@ -54,7 +53,6 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
         //get the movie data at the specified position
         Section section = sections.get(position);
         //populate the view with the category data
-        // holder.sectionTitle.setText(section.getTitle());
         holder.sectionContent.setText(section.getContents());
     }
 

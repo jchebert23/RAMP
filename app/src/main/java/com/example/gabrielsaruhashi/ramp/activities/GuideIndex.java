@@ -50,15 +50,6 @@ public class GuideIndex extends AppCompatActivity {
         rvSections.addItemDecoration(itemDecor);
 
         final Context context = this;
-//        Button startBtn = (Button) findViewById(R.id.startBtn);
-//        startBtn.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent myIntent = new Intent(view.getContext(), GuideView.class);
-//                startActivityForResult(myIntent, 0);
-//                ((Activity) context).overridePendingTransition(0, 0);
-//            }}
-//        );
-
         getCurrentCategories();
     }
 
