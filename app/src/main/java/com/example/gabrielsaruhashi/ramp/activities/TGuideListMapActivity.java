@@ -18,6 +18,7 @@ import com.example.gabrielsaruhashi.ramp.models.Places_Adapter;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -69,7 +70,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
             mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
         }
         mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
-        //mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_placeholder));
+        //mapFragment = ((MapFragment) getChildFragmentManager().findFragmentById(R.id.fragment_placeholder));
         Two11Client newClient = new Two11Client();
         newClient.search("enfield", new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
