@@ -39,7 +39,7 @@ public class SubcategoryView extends AppCompatActivity {
         }
     };
 
-    SubCategory dummySubCategory = new SubCategory("Title", "Catch Phrase", 255, 0, 0, GUIDE_DESCRIPTIONS);
+    SubCategory dummySubCategory = new SubCategory("Title", "Catch Phrase", 255, 0 ,0, GUIDE_DESCRIPTIONS);
 
 
     //The array list that stores the guides

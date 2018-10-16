@@ -32,6 +32,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.FileReader;
+
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 public class HouseGuideActivity extends AppCompatActivity {
@@ -42,6 +47,14 @@ public class HouseGuideActivity extends AppCompatActivity {
     Location mCurrentLocation;
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
     private long FASTEST_INTERVAL = 5000; /* 5 secs */
+
+
+    //https://crunchify.c om/how-to-read-json-object-from-file-in-java/
+    //JSONParser parser = new JSONP
+    //Object obj = parser.parse(new FileReader(res.raw.search_result.json));
+    //private JSONArray example = res.raw.search_result;
+
+
 
     private final static String KEY_LOCATION = "location";
 
