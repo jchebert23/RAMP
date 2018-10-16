@@ -4,35 +4,76 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/ivIcon"
+    <View
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:id="@+id/viewBackgroundColor"
+        android:layout_height="150dp"
+        android:background="@color/material_light_light_brown" />
 
     <TextView
-        android:id="@+id/titleTxt"
-        android:layout_width="220dp"
+        android:id="@+id/tvNumber"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivIcon"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:lineSpacingExtra="12sp"
-        android:text="Mental Health"
-        android:textAlignment="center"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:fontFamily="@font/roboto"
+        android:text="TextView"
+        android:textColor="@color/material_brown"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/tvSectionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tvNumber"
+        android:layout_below="@id/horizontalDiv"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="TextView"
+        android:textColor="@color/material_brown"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvGuide"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/ivForward"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/tvSectionTitle"
+        android:layout_marginTop="30dp"
+        android:onClick="onForwardClick"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/arrow_forward" />
+
+    <ImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/titleTxt"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="30dp"
+        android:layout_alignBottom="@id/tvSectionTitle"
+        android:onClick="onBackwardClick"
+        android:layout_marginLeft="10dp"
+        android:src="@drawable/arrow_back" />
+
+    <View
+        android:id="@+id/horizontalDiv"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tvNumber"
+        android:layout_alignStart="@id/tvNumber"
+        android:layout_alignEnd="@id/tvNumber"
+        android:layout_height="4dp"
+        android:background="@color/material_brown"/>
+
+    <!--fragment container-->
+        <FrameLayout
+            android:id="@+id/placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@id/viewBackgroundColor">
+        </FrameLayout>
 
 </RelativeLayout>

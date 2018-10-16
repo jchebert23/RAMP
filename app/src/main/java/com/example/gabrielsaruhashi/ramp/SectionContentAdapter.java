@@ -1,19 +1,13 @@
 package com.example.gabrielsaruhashi.ramp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.models.Section;
-import com.example.gabrielsaruhashi.ramp.models.SubCategory;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -49,7 +43,6 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
         public ViewHolder(final View itemView) {
             super(itemView);
             //lookup view objects by id
-            sectionTitle = itemView.findViewById(R.id.sectionTitleView);
             sectionContent = itemView.findViewById(R.id.sectionContentView);
         }
     }
@@ -60,7 +53,6 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
         //get the movie data at the specified position
         Section section = sections.get(position);
         //populate the view with the category data
-        holder.sectionTitle.setText(section.getTitle());
         holder.sectionContent.setText(section.getContents());
     }
 

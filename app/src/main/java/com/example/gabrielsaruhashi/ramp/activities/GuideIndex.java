@@ -1,25 +1,26 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.SectionAdapter;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 
 import java.util.ArrayList;
+
+import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
 public class GuideIndex extends AppCompatActivity {
 
@@ -42,16 +43,13 @@ public class GuideIndex extends AppCompatActivity {
         rvSections.setLayoutManager(new GridLayoutManager(this, 1));
         rvSections.setAdapter(adapter);
 
-        final Context context = this;
-        Button startBtn = (Button) findViewById(R.id.startBtn);
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), GuideView.class);
-                startActivityForResult(myIntent, 0);
-                ((Activity) context).overridePendingTransition(0, 0);
-            }}
-        );
+        Resources res = getResources();
+        Drawable horizontalLine = ResourcesCompat.getDrawable(res, R.drawable.horizontal_line, null);
+        DividerItemDecoration itemDecor = new DividerItemDecoration(rvSections.getContext(), VERTICAL);
+        itemDecor.setDrawable(horizontalLine);
+        rvSections.addItemDecoration(itemDecor);
 
+        final Context context = this;
         getCurrentCategories();
     }
 
@@ -85,7 +83,7 @@ public class GuideIndex extends AppCompatActivity {
     //get the list of current objects
     private void getCurrentCategories() {
         for(int i = 0; i < NUMBER_OF_SECTIONS; i++){
-            Section section = new Section(SECTION_TITLES[i], null);
+            Section section = new Section(SECTION_TITLES[i], null, i);
             sections.add(section);
             adapter.notifyItemInserted(sections.size() - 1);
         }

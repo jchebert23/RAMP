@@ -1,23 +1,19 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.SectionAdapter;
-import com.example.gabrielsaruhashi.ramp.SectionContentAdapter;
+import com.example.gabrielsaruhashi.ramp.SectionFragment;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 
 import java.util.ArrayList;
@@ -43,24 +39,29 @@ public class GuideView extends AppCompatActivity {
                     "2.         The Connection\n" +
                     "\n" +
                     "3.         Shoreline Wellness Center\n"};
-
-    ArrayList<Section> sections;
-
-    RecyclerView rvSections;
-    SectionContentAdapter adapter;
+//
+    ArrayList<Section> sectionList = new ArrayList<Section>();
+    int currentSection;
+    TextView tvNumber;
+    TextView tvSectionTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        makeSectionList();
+
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        // Replace the contents of the container with the new fragment
+        currentSection = getIntent().getIntExtra("sectionNumber", 0);
+        SectionFragment section = SectionFragment.newInstance(currentSection, getIntent().getStringExtra("sectionName"));
+                // pass in title, body
+        ft.replace(R.id.placeholder, section).commit();
         setContentView(R.layout.activity_guide_view);
-
-        sections = new ArrayList<>();
-        adapter = new SectionContentAdapter(sections);
-        rvSections = (RecyclerView) findViewById(R.id.rvGuide);
-        rvSections.setLayoutManager(new GridLayoutManager(this, 1));
-        rvSections.setAdapter(adapter);
-
-        getCurrentCategories();
+        tvNumber = (TextView)findViewById(R.id.tvNumber);
+        tvNumber.setText(" " + (currentSection + 1) + " ");
+        tvSectionTitle = findViewById(R.id.tvSectionTitle);
+        tvSectionTitle.setText(sectionList.get(currentSection).getTitle());
     }
 
     @Override
@@ -90,12 +91,53 @@ public class GuideView extends AppCompatActivity {
 
     }
 
-    //get the list of current objects
-    private void getCurrentCategories() {
+    private void makeSectionList() {
         for(int i = 0; i < NUMBER_OF_SECTIONS; i++){
-            Section section = new Section(SECTION_TITLES[i], SECTION_CONTENT[i]);
-            sections.add(section);
-            adapter.notifyItemInserted(sections.size() - 1);
+            Section section = new Section(SECTION_TITLES[i], SECTION_CONTENT[i], i);
+            sectionList.add(section);
+        }
+    }
+
+    public void onForwardClick (View view) {
+        // user wants to move to next section
+        FragmentTransaction newft = getSupportFragmentManager().beginTransaction();
+        newft.setCustomAnimations(R.anim.slides,
+                R.anim.slides_out);
+        if (currentSection < NUMBER_OF_SECTIONS - 1) {
+            // if not last section, move to the next one
+            SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection + 1).getNumber(), sectionList.get(currentSection + 1).getTitle());
+            currentSection++;
+            newft.replace(R.id.placeholder, sectionFragment).commit();
+            setContentView(R.layout.activity_guide_view);
+            tvNumber = (TextView)findViewById(R.id.tvNumber);
+            tvNumber.setText(" " + (currentSection + 1) + " ");
+            tvSectionTitle = findViewById(R.id.tvSectionTitle);
+            tvSectionTitle.setText(sectionList.get(currentSection).getTitle());
+        }
+
+    }
+
+    public void onBackwardClick (View view) {
+        // user wants to move to previous section
+        FragmentTransaction backFt = getSupportFragmentManager().beginTransaction();
+        backFt.setCustomAnimations(android.R.anim.slide_in_left,
+                android.R.anim.slide_out_right);
+        Log.d("GuideView", "current section: " + currentSection);
+        if (currentSection > 0) {
+            // if not first section, move to previous one
+            SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection - 1).getNumber(), sectionList.get(currentSection - 1).getTitle());
+            currentSection--;
+            backFt.replace(R.id.placeholder, sectionFragment).commit();
+            setContentView(R.layout.activity_guide_view);
+            tvNumber = (TextView)findViewById(R.id.tvNumber);
+            tvNumber.setText(" " + (currentSection + 1) + " ");
+            tvSectionTitle = findViewById(R.id.tvSectionTitle);
+            tvSectionTitle.setText(sectionList.get(currentSection).getTitle());
+        }
+        else {
+            // if first section, go to table of contents
+            Intent i = new Intent(GuideView.this, GuideIndex.class);
+            startActivity(i);
         }
     }
 }
