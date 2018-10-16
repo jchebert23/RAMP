@@ -10,21 +10,24 @@
     <TextView
         android:id="@+id/TitleQuestionLabel"
         android:layout_width="wrap_content"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="@dimen/font_header"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/top_margin"
-        android:text="How are you feeling?" />
+        android:fontFamily="@font/roboto"
+        android:text="What are you looking for?"
+        android:textColor="@color/material_brown"
+        android:textSize="@dimen/font_header"
+        android:textStyle="bold" />
 
     <SearchView
         android:id="@+id/svSearchbar"
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/top_margin"
+        android:layout_height="wrap_content"
         android:layout_below="@id/TitleQuestionLabel"
-        android:layout_marginRight="@dimen/horizontal_margin"
         android:layout_marginLeft="@dimen/horizontal_margin"
-        android:layout_height="wrap_content" />
+        android:layout_marginRight="@dimen/horizontal_margin"
+        android:layout_marginTop="@dimen/top_margin"
+        android:background="@color/material_light_light_brown" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvCategories"
