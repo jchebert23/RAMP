@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@color/light_background"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivIcon"
+        android:layout_marginTop="39dp"
+        android:fontFamily="@font/roboto"
+        android:lineSpacingExtra="12sp"
+        android:layout_marginLeft="10dp"
+        android:text="Mental Health Guide"
+        android:textColor="@color/material_brown"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/horizontalDiv"
+        android:layout_width="80dp"
+        android:layout_below="@id/titleTxt"
+        android:layout_height="4dp"
+        android:layout_alignLeft="@id/titleTxt"
+        android:background="@color/material_brown"/>
+
+    <TextView
+        android:id="@+id/tvContents"
+        android:textColor="@color/material_grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/titleTxt"
+        android:layout_below="@id/horizontalDiv"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/roboto"
+        android:text="Contents"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvSections"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvContents"
+        android:layout_marginTop="40dp" />
+
+</RelativeLayout>

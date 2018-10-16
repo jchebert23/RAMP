@@ -35,7 +35,7 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
     public GuideAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        //create the view using the item_movie layout
+        //create the view using the item_category layout
         View subCategoryView = inflater.inflate(R.layout.item_guide, parent, false);
 
         //color = context.getString(R.integer.subCategoryDiffR)
