@@ -8,10 +8,11 @@
     <color name="btn3Bg">#eeeeee</color>
     <color name="startBtn">#33b32c</color>
     <color name="material_brown">#3e2723</color>
-    <color name="material_light_light_brown">#EFEBE9</color>
+    <color name="material_light_light_brown">#efebe9</color>
     <color name="light_background">#FEFAF7</color>
     <color name="material_grey">#bdbdbd</color>
     <color name="material_light_brown">#D7CCC8</color>
+    <color name="material_light_blue">#ECEFF1</color>
 
 
 

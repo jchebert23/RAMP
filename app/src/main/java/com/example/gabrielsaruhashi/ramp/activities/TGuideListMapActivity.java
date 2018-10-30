@@ -3,22 +3,20 @@ package com.example.gabrielsaruhashi.ramp.activities;
 import android.app.FragmentTransaction;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.Two11Client;
 import com.example.gabrielsaruhashi.ramp.models.Places;
 import com.example.gabrielsaruhashi.ramp.models.PlacesFragment;
-import com.example.gabrielsaruhashi.ramp.models.Places_Adapter;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -30,8 +28,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -47,6 +43,13 @@ public class TGuideListMapActivity extends AppCompatActivity {
     Location mCurrentLocation;
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
     private long FASTEST_INTERVAL = 5000; /* 5 secs */
+
+    /*
+    Boolean for switching between list view (default) and map view.
+    Depending on boolean value, upon click of button either list view or map view will be loaded into the fragment container.
+     */
+    boolean isMapView = false;
+    private PlacesFragment placesFragment;
 
     private final static String KEY_LOCATION = "location";
     ArrayList<Places> places = new ArrayList<>();
@@ -69,8 +72,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
             // is not null.
             mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
         }
-        mapFragment = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
-        //mapFragment = ((MapFragment) getChildFragmentManager().findFragmentById(R.id.fragment_placeholder));
+        // load places fragment
         Two11Client newClient = new Two11Client();
         newClient.search("enfield", new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -78,43 +80,10 @@ public class TGuideListMapActivity extends AppCompatActivity {
                     JSONArray placesJson = response.getJSONArray("results");
                     places.clear();
                     places.addAll(Places.fromJson(placesJson));
-                    Log.d("search", response.toString());
-                    Log.d("search", Integer.toString(places.size()));
-                    for(int i = 0; i < places.size(); i++){
-                        Log.d("search", places.get(i).toPrint());
-                    }
-
-                    //TODO: MOVE THIS TO ASYNC
-                    if (mapFragment != null) {
-                        Log.d("search", "entered");
-                        mapFragment.getMapAsync(new OnMapReadyCallback() {
-                            @Override
-                            public void onMapReady(GoogleMap map) {
-                                Log.d("search", "ready");
-                                //Log.d("search", "places.size is: " + places.size());
-                                LatLng location = null;
-                                for(int i = 0; i < places.size(); i++){
-                                    location = new LatLng(places.get(i).getLat(), places.get(i).getLon());
-                                    map.addMarker(new MarkerOptions().position(location)
-                                            .title("Hello World")
-                                    );
-                                    Log.d("search", "latitude:" + places.get(i).getLat());
-                                }
-                                map.moveCamera(CameraUpdateFactory.newLatLng(location));
-                                loadMap(map);
-                            }
-                        });
-                    } else {
-                        Log.d("search", "failed");
-                        //Toast.makeText(this, "Error - Map Fragment was null!!", Toast.LENGTH_SHORT).show();
-                    }
-
-                    //ADD the recycle view here!!
+                    placesFragment = PlacesFragment.newInstance(places);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
-                    ft.add(R.id.fragment_placeholder, PlacesFragment.newInstance(places));
+                    ft.replace(R.id.fragment_placeholder, PlacesFragment.newInstance(places));
                     ft.commit();
-                    //Log.d("search", "compelted");
-                    //Log.d("search", "places.size is: " + places.size());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -132,6 +101,63 @@ public class TGuideListMapActivity extends AppCompatActivity {
             //MapDemoActivityPermissionsDispatcher.startLocationUpdatesWithPermissionCheck(this);
         } else {
             Toast.makeText(this, "Error - Map was null!!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onSwitchView (View view) {
+        if (isMapView) {
+            // trigger list view
+            view.setSelected(true);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            mapFragment.getView().setVisibility(View.INVISIBLE);
+            ft.replace(R.id.fragment_placeholder, PlacesFragment.newInstance(places));
+            ft.commit();
+            isMapView = false;
+        } else {
+            // trigger map view
+            view.setSelected(false);
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            ft.hide(placesFragment);
+            ft.commit();
+            // load map fragment
+            FragmentManager fm = getSupportFragmentManager();
+            mapFragment = SupportMapFragment.newInstance();
+            fm.beginTransaction().replace(R.id.fragment_placeholder, mapFragment).commit();
+            Two11Client newClient = new Two11Client();
+            newClient.search("enfield", new JsonHttpResponseHandler() {
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    try {
+                        JSONArray placesJson = response.getJSONArray("results");
+                        places.clear();
+                        places.addAll(Places.fromJson(placesJson));
+                        // TODO (masayukinagase) instead of doing this try / catch, move it to an AsyncTask
+                        if (mapFragment != null) {
+                            Log.d("search", "entered");
+                            mapFragment.getMapAsync(new OnMapReadyCallback() {
+                                @Override
+                                public void onMapReady(GoogleMap map) {
+                                    Log.d("search", "ready");
+                                    LatLng location = null;
+                                    for(int i = 0; i < places.size(); i++){
+                                        location = new LatLng(places.get(i).getLat(), places.get(i).getLon());
+                                        map.addMarker(new MarkerOptions().position(location)
+                                                .title("Hello World")
+                                        );
+                                        Log.d("search", "latitude:" + places.get(i).getLat());
+                                    }
+                                    map.moveCamera(CameraUpdateFactory.newLatLng(location));
+                                    loadMap(map);
+                                }
+                            });
+                        } else {
+                            Log.d("search", "failed");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            isMapView = true;
         }
     }
 
