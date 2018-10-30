@@ -35,8 +35,6 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
         public TextView address;
         public TextView phoneNumber;
 
-
-
         // We also create a constructor that accepts the entire item row
         // and does the view lookups to find each subview
         public ViewHolder(View itemView) {
@@ -51,10 +49,10 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
             address = (TextView) itemView.findViewById(R.id.address);
             phoneNumber = (TextView) itemView.findViewById(R.id.phoneNumber);
         }
+
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition();
-            Log.d("Places_Adapter", "inside onClick");
             // ensure valid position
             if (position != RecyclerView.NO_POSITION) {
                 // get place at position
@@ -65,7 +63,6 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
                 context.startActivity(intent);
             }
         }
-
     }
 
     private List<Places> mPlaces;
@@ -94,7 +91,6 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
         Log.d("search", "POSITION" + Integer.toString(position));
         final Places place = mPlaces.get(position);
         Log.d("search", place.toPrint());
-
 
         // Set item views based on your views and data model
 //        TextView id = viewHolder.id;
@@ -126,7 +122,6 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
             TextView phoneNumber = viewHolder.phoneNumber;
             phoneNumber.setText(place.getPhoneNumer());
         }
-
     }
 
     // Returns the total count of items in the list

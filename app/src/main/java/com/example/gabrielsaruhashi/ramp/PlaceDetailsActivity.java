@@ -30,7 +30,6 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         tvWalkIns = findViewById(R.id.tvWalkIns);
 
         Places place = Parcels.unwrap(getIntent().getParcelableExtra("places"));
-        Log.d("PlaceDetailsActivity", place.getHours());
         if (place.getHours().equals("null")) {
             tvHours.setText("Hours: N/A");
         } else {
