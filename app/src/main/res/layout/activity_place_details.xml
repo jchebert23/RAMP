@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlaceDetailsActivity">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        app:srcCompat="@drawable/ic_health" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/material_brown"
+        android:fontFamily="@font/roboto"
+        android:layout_marginTop="15dp"
+        android:textSize="36px"
+        android:layout_below="@id/imageView2"
+        android:text="Primary Care" />
+    <View
+        android:id="@+id/horizontalDiv"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="20dp"
+        android:layout_height="2dp"
+        android:background="@color/material_light_light_brown"/>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/horizontalDiv"
+    android:layout_marginTop="10dp">
+
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:lineSpacingExtra="8sp"
+        android:layout_marginLeft="5dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvHours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvName"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/roboto"
+        android:lineSpacingExtra="8sp"
+        android:text="" />
+
+    <View
+        android:id="@+id/horizontalDiv3"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tvHours"
+        android:layout_marginTop="2dp"
+        android:layout_height="2dp"
+        android:background="@color/material_light_light_brown"/>
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalDiv3"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/roboto"
+        android:lineSpacingExtra="8sp"
+        android:text="" />
+
+    <View
+        android:id="@+id/horizontalDiv4"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tvAddress"
+        android:layout_marginTop="2dp"
+        android:layout_height="2dp"
+        android:background="@color/material_light_light_brown"/>
+
+    <TextView
+        android:id="@+id/tvPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalDiv4"
+        android:layout_marginLeft="5dp"
+        android:fontFamily="@font/roboto"
+        android:layout_marginTop="2dp"
+        android:lineSpacingExtra="8sp"
+        android:text="" />
+
+    <View
+        android:id="@+id/horizontalDiv5"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tvPhoneNumber"
+        android:layout_marginTop="2dp"
+        android:layout_height="2dp"
+        android:background="@color/material_light_light_brown"/>
+
+    <TextView
+        android:id="@+id/tvPricingDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalDiv5"
+        android:layout_marginLeft="5dp"
+        android:fontFamily="@font/roboto"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:lineSpacingExtra="8sp"
+        android:text="Pricing details- see website" />
+
+    <View
+        android:id="@+id/horizontalDiv6"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tvPricingDetails"
+        android:layout_marginTop="2dp"
+        android:layout_height="2dp"
+        android:background="@color/material_light_light_brown"/>
+
+    <TextView
+        android:id="@+id/tvWalkIns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalDiv6"
+        android:layout_marginLeft="5dp"
+        android:fontFamily="@font/roboto"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:lineSpacingExtra="8sp"
+        android:text="" />
+    <View
+        android:id="@+id/horizontalDiv7"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/tvWalkIns"
+        android:layout_marginTop="2dp"
+        android:layout_height="2dp"
+        android:background="@color/material_light_light_brown"/>
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_below="@id/horizontalDiv7"
+        android:fontFamily="@font/roboto"
+        android:lineSpacingExtra="8sp"
+        android:text="" />
+</RelativeLayout>
+
+</RelativeLayout>

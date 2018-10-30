@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
         rvCategories.setAdapter(adapter);
         // get reference to searchview
         svSearchview = (SearchView) findViewById(R.id.svSearchbar);
-        // svSearchview.setQueryHint("What are you looking for?"); // set the hint text to display in the query text field
         svSearchview.setIconifiedByDefault(false);  // set the default or resting state of the search field
 
 

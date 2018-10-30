@@ -43,7 +43,12 @@ public class TGuideListMapActivity extends AppCompatActivity {
     Location mCurrentLocation;
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
     private long FASTEST_INTERVAL = 5000; /* 5 secs */
-    boolean isMapView = false; //default is list view
+
+    /*
+    Boolean for switching between list view (default) and map view.
+    Depending on boolean value, upon click of button either list view or map view will be loaded into the fragment container.
+     */
+    boolean isMapView = false;
     private PlacesFragment placesFragment;
 
     private final static String KEY_LOCATION = "location";
@@ -102,6 +107,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
     public void onSwitchView (View view) {
         if (isMapView) {
             // trigger list view
+            view.setSelected(true);
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             mapFragment.getView().setVisibility(View.INVISIBLE);
             ft.replace(R.id.fragment_placeholder, PlacesFragment.newInstance(places));
@@ -109,6 +115,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
             isMapView = false;
         } else {
             // trigger map view
+            view.setSelected(false);
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.hide(placesFragment);
             ft.commit();
@@ -123,7 +130,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
                         JSONArray placesJson = response.getJSONArray("results");
                         places.clear();
                         places.addAll(Places.fromJson(placesJson));
-                        //TODO: YOYO MOVE THIS TO ASYNC
+                        // TODO (masayukinagase) instead of doing this try / catch, move it to an AsyncTask
                         if (mapFragment != null) {
                             Log.d("search", "entered");
                             mapFragment.getMapAsync(new OnMapReadyCallback() {

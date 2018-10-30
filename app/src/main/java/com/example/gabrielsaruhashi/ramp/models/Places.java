@@ -24,6 +24,7 @@ public class Places implements Parcelable{
     private String description;
     private String address;
     private String phoneNumer;
+    private String walkInsAccepted;
 
     public int getId(){
         return this.id;
@@ -43,6 +44,8 @@ public class Places implements Parcelable{
 
     public String getPhoneNumer() { return phoneNumer; }
 
+    public String getWalkIns() { return walkInsAccepted; }
+
     public String toPrint(){ return "id: " + Integer.toString(id) + " latitude: " + Double.toString(lat) + " longitude: " + Double.toString(lon); }
 
     //To allow for parcelling:
@@ -57,6 +60,7 @@ public class Places implements Parcelable{
         description = in.readString();
         address = in.readString();
         phoneNumer = in.readString();
+        walkInsAccepted = in.readString();
     }
 
     public int describeContents(){
@@ -72,6 +76,7 @@ public class Places implements Parcelable{
         dest.writeString(description);
         dest.writeString(address);
         dest.writeString(phoneNumer);
+        dest.writeString(walkInsAccepted);
     }
 
     public Places (){
@@ -83,6 +88,7 @@ public class Places implements Parcelable{
         this.description = null;
         this.address = null;
         this.phoneNumer = null;
+        this.walkInsAccepted = null;
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
@@ -104,6 +110,7 @@ public class Places implements Parcelable{
             JSONObject program = programS.getJSONObject("program");
             newPlace.name = program.getString("name");
             newPlace.description = program.getString("description");
+            newPlace.walkInsAccepted = program.getString("walk_ins_accepted");
 
             JSONObject address = programS.getJSONObject("address");
             newPlace.address = address.getString("address_1");

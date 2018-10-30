@@ -7,25 +7,79 @@
     android:orientation="vertical"
     tools:context="com.example.gabrielsaruhashi.ramp.activities.TGuideListMapActivity">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onSwitchView"
-        android:text="Toggle List/Map" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/ic_health" />
 
-    <!--<fragment-->
-        <!--android:id="@+id/map"-->
-        <!--class="com.google.android.gms.maps.SupportMapFragment"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="160dp"-->
-        <!--android:layout_marginTop="30dp" />-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto"
+        android:text="Primary Care"
+        android:textColor="@color/material_brown"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:background="@color/material_light_blue"
+            />
+        <View
+            android:id="@+id/horizontalDiv2"
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:background="@color/material_brown"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/horizontalDiv2"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Description of Primary Care goes here!"
+            android:fontFamily="@font/roboto"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+    <SearchView
+        android:id="@+id/svSearchbar2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/material_light_light_brown" >
+
+    </SearchView>
+
+    <ImageButton
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:onClick="onSwitchView"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/list_icon" />
+</RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fragment_placeholder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"></FrameLayout>
-
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
+    </FrameLayout>
 
 </LinearLayout>
