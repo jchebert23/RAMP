@@ -1,6 +1,7 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.gabrielsaruhashi.ramp.PlaceDetailsActivity;
 import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.Two11Client;
 import com.example.gabrielsaruhashi.ramp.models.Places;
@@ -20,12 +22,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -139,10 +143,24 @@ public class TGuideListMapActivity extends AppCompatActivity {
                                     Log.d("search", "ready");
                                     LatLng location = null;
                                     for(int i = 0; i < places.size(); i++){
+                                        final Places place = places.get(i);
                                         location = new LatLng(places.get(i).getLat(), places.get(i).getLon());
-                                        map.addMarker(new MarkerOptions().position(location)
-                                                .title("Hello World")
+                                        Marker m = map.addMarker(new MarkerOptions().position(location)
+                                                .title(places.get(i).getName())
                                         );
+                                        m.setTag(places.get(i));
+                                        map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                            @Override
+                                            public boolean onMarkerClick(Marker marker) {
+                                                Places currentPlace = (Places) marker.getTag();
+                                                Intent i = new Intent(TGuideListMapActivity.this, PlaceDetailsActivity.class);
+                                                i.putExtra("places", Parcels.wrap(currentPlace));
+                                                startActivity(i);
+                                                return true;
+
+                                            }
+                                        });
+
                                         Log.d("search", "latitude:" + places.get(i).getLat());
                                     }
                                     map.moveCamera(CameraUpdateFactory.newLatLng(location));

@@ -1,43 +1,16 @@
 package com.example.gabrielsaruhashi.ramp;
 
 
-import android.Manifest;
-import android.app.Dialog;
 import android.location.Location;
 import android.os.Bundle;
-import android.os.Looper;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.ErrorDialogFragment;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.SettingsClient;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.FileReader;
-
-import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 public class HouseGuideActivity extends AppCompatActivity {
 
@@ -93,7 +66,7 @@ public class HouseGuideActivity extends AppCompatActivity {
 
     }
 
-    protected void loadMap(GoogleMap googleMap) {
+    protected GoogleMap loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
             // Map is ready
@@ -103,6 +76,8 @@ public class HouseGuideActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Error - Map was null!!", Toast.LENGTH_SHORT).show();
         }
+
+        return map;
     }
 
 
