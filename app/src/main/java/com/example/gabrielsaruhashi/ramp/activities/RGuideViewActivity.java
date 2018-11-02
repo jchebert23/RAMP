@@ -13,12 +13,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.SectionFragment;
+import com.example.gabrielsaruhashi.ramp.fragments.SectionFragment;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 
 import java.util.ArrayList;
 
-public class GuideView extends AppCompatActivity {
+public class RGuideViewActivity extends AppCompatActivity {
 
     public final static int NUMBER_OF_SECTIONS = 3;
     public final static String[] SECTION_TITLES = {"What are treatment options?", "What are payment options?", "Where do I start?"};
@@ -122,7 +122,7 @@ public class GuideView extends AppCompatActivity {
         FragmentTransaction backFt = getSupportFragmentManager().beginTransaction();
         backFt.setCustomAnimations(android.R.anim.slide_in_left,
                 android.R.anim.slide_out_right);
-        Log.d("GuideView", "current section: " + currentSection);
+        Log.d("RGuideViewActivity", "current section: " + currentSection);
         if (currentSection > 0) {
             // if not first section, move to previous one
             SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection - 1).getNumber(), sectionList.get(currentSection - 1).getTitle());
@@ -136,7 +136,7 @@ public class GuideView extends AppCompatActivity {
         }
         else {
             // if first section, go to table of contents
-            Intent i = new Intent(GuideView.this, GuideIndex.class);
+            Intent i = new Intent(RGuideViewActivity.this, RGuideIndexActivity.class);
             startActivity(i);
         }
     }

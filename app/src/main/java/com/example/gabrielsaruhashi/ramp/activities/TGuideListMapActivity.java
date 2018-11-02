@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.Two11Client;
+import com.example.gabrielsaruhashi.ramp.Clients.Two11Client;
 import com.example.gabrielsaruhashi.ramp.models.Places;
 import com.example.gabrielsaruhashi.ramp.models.PlacesFragment;
 import com.google.android.gms.location.LocationRequest;

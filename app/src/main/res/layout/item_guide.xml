@@ -14,35 +14,6 @@
         android:orientation="horizontal"
         android:background="@android:color/holo_orange_light"
         android:gravity="center">
-        <!--<FrameLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="10.0"-->
-            <!--android:layout_gravity="center">-->
-            <!--<RelativeLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center_horizontal">-->
-                <!--<ImageButton-->
-                    <!--android:elevation="2dp"-->
-                    <!--android:layout_width="60dp"-->
-                    <!--android:layout_height="30dp"-->
-                    <!--android:background="@drawable/round_background"-->
-                    <!--android:gravity="center"-->
-                    <!--android:tint="@android:color/black"/>-->
-                    <!--&lt;!&ndash;app:srcCompat="@android:drawable/ic_input_add" />&ndash;&gt;-->
-            <!--</RelativeLayout>-->
-            <!--<RelativeLayout-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center"-->
-                <!--android:layout_gravity="center">-->
-                <!--<TextView-->
-                    <!--android:id="@+id/generalTitle"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="Item Title" />-->
-            <!--</RelativeLayout>-->
 
         <RelativeLayout
             android:layout_width="wrap_content"

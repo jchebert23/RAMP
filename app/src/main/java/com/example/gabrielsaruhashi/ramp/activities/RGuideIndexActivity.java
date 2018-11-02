@@ -15,14 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.SectionAdapter;
+import com.example.gabrielsaruhashi.ramp.adapters.SectionAdapter;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 
 import java.util.ArrayList;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class GuideIndex extends AppCompatActivity {
+public class RGuideIndexActivity extends AppCompatActivity {
 
     public final static int NUMBER_OF_SECTIONS = 3;
     public final static String[] SECTION_TITLES = {"What are treatment options?", "What are payment options?", "Where do I start?"};

@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.activities.TGuideListMapActivity;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
@@ -37,7 +38,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         /*categoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, SubcategoryView.class);
+                Intent i = new Intent(context, SubcategoryViewActivity.class);
                 context.startActivity(i);
             }
         }); */
@@ -61,7 +62,6 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Intent i = new Intent(itemView.getContext(), SubcategoryView.class);
                     Intent i = new Intent(itemView.getContext(), TGuideListMapActivity.class);
                     itemView.getContext().startActivity(i);
                 }
@@ -80,7 +80,6 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         int r = subcategory.getR();
         int g = subcategory.getG();
         int b = subcategory.getB();
-        Log.d("rgb", Integer.toString(b));
 
         //String hexColor
         String hex = String.format("#%02x%02x%02x", r, g,b);

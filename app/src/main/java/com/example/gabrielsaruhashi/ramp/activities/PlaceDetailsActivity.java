@@ -1,10 +1,11 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.models.Places;
 
 import org.parceler.Parcels;

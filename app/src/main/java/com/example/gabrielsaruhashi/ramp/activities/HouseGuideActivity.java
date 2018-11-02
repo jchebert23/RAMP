@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.activities;
 
 
 import android.Manifest;
@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.gabrielsaruhashi.ramp.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.ErrorDialogFragment;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -38,7 +39,8 @@ import org.json.JSONObject;
 import java.io.FileReader;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
-
+//Note that much of the map code in this project is taken from this source:
+//https://github.com/codepath/android-google-maps-demo/blob/master/app/src/main/java/com/example/mapdemo/MapDemoActivity.java
 public class HouseGuideActivity extends AppCompatActivity {
 
     private SupportMapFragment mapFragment;
