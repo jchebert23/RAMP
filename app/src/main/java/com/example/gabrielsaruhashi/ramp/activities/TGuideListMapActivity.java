@@ -146,6 +146,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
                                         Log.d("search", "latitude:" + places.get(i).getLat());
                                     }
                                     map.moveCamera(CameraUpdateFactory.newLatLng(location));
+                                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 8.0f));
                                     loadMap(map);
                                 }
                             });

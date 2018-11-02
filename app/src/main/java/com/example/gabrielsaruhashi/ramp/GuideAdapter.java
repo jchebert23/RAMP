@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.activities.QuestionsIntroActivity;
+import com.example.gabrielsaruhashi.ramp.activities.TGuideListMapActivity;
 import com.example.gabrielsaruhashi.ramp.models.Guide;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
@@ -42,7 +43,8 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
         subCategoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, QuestionsIntroActivity.class);
+                //Intent i = new Intent(context, QuestionsIntroActivity.class);
+                Intent i = new Intent(context, TGuideListMapActivity.class);
                 context.startActivity(i);
             }
         });
@@ -61,9 +63,12 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
 
         //int color = ContextCompat.getColor(R.color.);
         //int color_rgb =
-        int r = 166 - 25 * position;
-        int g = 201 - 30 * position;
-        int b = 234 - 35 * position;
+//        int r = 166 - 7 * position;
+//        int g = 201 - 12 * position;
+//        int b = 234 - 17 * position;
+        int r = 224 - 12 * position;
+        int g = 238 - 12 * position;
+        int b = 251 - 12 * position;
 
         //String hexColor
         String hex = String.format("#%02x%02x%02x", r, g,b);

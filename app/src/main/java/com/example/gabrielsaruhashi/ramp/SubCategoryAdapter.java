@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gabrielsaruhashi.ramp.activities.TGuideListMapActivity;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
 import java.util.ArrayList;
@@ -59,7 +61,8 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(itemView.getContext(), SubcategoryView.class);
+                    //Intent i = new Intent(itemView.getContext(), SubcategoryView.class);
+                    Intent i = new Intent(itemView.getContext(), TGuideListMapActivity.class);
                     itemView.getContext().startActivity(i);
                 }
             });;
@@ -77,6 +80,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         int r = subcategory.getR();
         int g = subcategory.getG();
         int b = subcategory.getB();
+        Log.d("rgb", Integer.toString(b));
 
         //String hexColor
         String hex = String.format("#%02x%02x%02x", r, g,b);

@@ -23,7 +23,7 @@ import com.google.android.flexbox.JustifyContent;
 import java.util.ArrayList;
 
 public class CategoryView extends AppCompatActivity {
-
+    //We dont need this page anymore along with Qualifications and Questionaires.
     public final static int NUMBER_OF_SUBCATEGORIES = 7;
     public final static String[] SUBCATEGORIES_TITLES = {"A", "B", "C", "D", "E", "F", "G"};
     public final static int[] R_VALS = {0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};

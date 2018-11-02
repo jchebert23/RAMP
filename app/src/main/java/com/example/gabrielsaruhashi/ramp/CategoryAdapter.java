@@ -39,7 +39,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         categoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, QuestionsIntroActivity.class);
+                //the page should go to SubcategoryView.class
+                //We skip all of the Qualifications and Questions information.
+                //Intent i = new Intent(context, QuestionsIntroActivity.class);
+                Intent i = new Intent(context, SubcategoryView.class);
                 context.startActivity(i);
             }
         });
