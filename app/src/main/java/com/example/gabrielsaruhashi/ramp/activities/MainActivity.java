@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.SearchView;
 
+import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.adapters.CategoryAdapter;
 import com.example.gabrielsaruhashi.ramp.models.Category;
 
 import java.util.ArrayList;

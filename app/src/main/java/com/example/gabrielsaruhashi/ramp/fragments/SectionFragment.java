@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.adapters.SectionContentAdapter;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 
 import java.util.ArrayList;

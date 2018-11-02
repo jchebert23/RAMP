@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.gabrielsaruhashi.ramp.activities.QuestionsIntroActivity;
+import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.activities.SubcategoryViewActivity;
 import com.example.gabrielsaruhashi.ramp.models.Category;
 
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         categoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, QuestionsIntroActivity.class);
+                Intent i = new Intent(context, SubcategoryViewActivity.class);
                 context.startActivity(i);
             }
         });

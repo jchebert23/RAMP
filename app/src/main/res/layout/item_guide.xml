@@ -14,13 +14,26 @@
         android:orientation="horizontal"
         android:background="@android:color/holo_orange_light"
         android:gravity="center">
-        <TextView
-            android:id="@+id/generalTitle"
+
+        <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Item Title"
             android:layout_weight="10.0"
-            android:gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/generalTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A guide with a cool name"
+                android:padding="6dp"
+                android:layout_weight="10.0"
+                android:background="@drawable/round_background"
+                android:layout_marginLeft="@dimen/horizontal_margin"
+                android:layout_marginRight="5dp"/>
+        </RelativeLayout>
+
+
 
         <ImageButton
             android:elevation="2dp"
@@ -31,8 +44,8 @@
             android:background="@drawable/round_shape"
 
             android:gravity="center"
-            android:tint="@android:color/black"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:tint="#6c5a46"
+            app:srcCompat="@drawable/arrow_forward" />
     </LinearLayout>
 
 </LinearLayout>
