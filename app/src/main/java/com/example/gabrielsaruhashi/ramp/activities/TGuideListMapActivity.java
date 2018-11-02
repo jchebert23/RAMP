@@ -11,10 +11,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.gabrielsaruhashi.ramp.Clients.Two11Client;
+import com.example.gabrielsaruhashi.ramp.clients.Two11Client;
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.models.Places;
-import com.example.gabrielsaruhashi.ramp.models.PlacesFragment;
+import com.example.gabrielsaruhashi.ramp.models.Place;
+import com.example.gabrielsaruhashi.ramp.fragments.PlacesFragment;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -55,7 +55,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
     private PlacesFragment placesFragment;
 
     private final static String KEY_LOCATION = "location";
-    ArrayList<Places> places = new ArrayList<>();
+    ArrayList<Place> places = new ArrayList<>();
 
     /*
      * Define a request code to send to Google Play services This code is
@@ -82,7 +82,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
                 try {
                     JSONArray placesJson = response.getJSONArray("results");
                     places.clear();
-                    places.addAll(Places.fromJson(placesJson));
+                    places.addAll(Place.fromJson(placesJson));
                     placesFragment = PlacesFragment.newInstance(places);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.fragment_placeholder, PlacesFragment.newInstance(places));
@@ -132,7 +132,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
                     try {
                         JSONArray placesJson = response.getJSONArray("results");
                         places.clear();
-                        places.addAll(Places.fromJson(placesJson));
+                        places.addAll(Place.fromJson(placesJson));
                         // TODO (masayukinagase) instead of doing this try / catch, move it to an AsyncTask
                         if (mapFragment != null) {
                             Log.d("search", "entered");
@@ -150,7 +150,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
                                         map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                                             @Override
                                             public boolean onMarkerClick(Marker marker) {
-                                                Places currentPlace = (Places) marker.getTag();
+                                                Place currentPlace = (Place) marker.getTag();
                                                 Intent i = new Intent(TGuideListMapActivity.this, PlaceDetailsActivity.class);
                                                 i.putExtra("places", Parcels.wrap(currentPlace));
                                                 startActivity(i);

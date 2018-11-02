@@ -2,11 +2,10 @@ package com.example.gabrielsaruhashi.ramp.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.models.Places;
+import com.example.gabrielsaruhashi.ramp.models.Place;
 
 import org.parceler.Parcels;
 
@@ -30,7 +29,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         tvAddress = findViewById(R.id.tvAddress);
         tvWalkIns = findViewById(R.id.tvWalkIns);
 
-        Places place = Parcels.unwrap(getIntent().getParcelableExtra("places"));
+        Place place = Parcels.unwrap(getIntent().getParcelableExtra("places"));
         if (place.getHours().equals("null")) {
             tvHours.setText("Hours: N/A");
         } else {
