@@ -143,7 +143,6 @@ public class TGuideListMapActivity extends AppCompatActivity {
                                     Log.d("search", "ready");
                                     LatLng location = null;
                                     for(int i = 0; i < places.size(); i++){
-                                        final Places place = places.get(i);
                                         location = new LatLng(places.get(i).getLat(), places.get(i).getLon());
                                         Marker m = map.addMarker(new MarkerOptions().position(location)
                                                 .title(places.get(i).getName())
