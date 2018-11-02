@@ -13,20 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".activities.MainActivity">
              <intent-filter>
-             <action android:name="android.intent.action.MAIN" />
-
-
-             <category android:name="android.intent.category.LAUNCHER" />
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.LAUNCHER" />
              </intent-filter>
         </activity>
         <activity
             android:name=".helpers.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.HouseGuideActivity"></activity>
-        <activity android:name=".activities.TGuideListMapActivity"></activity>
+        <activity android:name=".activities.TGuideListMapActivity">
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

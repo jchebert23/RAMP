@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * https://guides.codepath.com/android/converting-json-to-models
  */
 
-public class Places implements Parcelable{
+public class Place implements Parcelable{
     private int id;
     private double lat;
     private double lon;
@@ -51,7 +51,7 @@ public class Places implements Parcelable{
     //To allow for parcelling:
     //https://stackoverflow.com/questions/7181526/how-can-i-make-my-custom-objects-parcelable
     //http://prasanta-paul.blogspot.com/2010/06/android-parcelable-example.html
-    public Places (Parcel in){
+    public Place(Parcel in){
         id = in.readInt();
         lat = in.readDouble();
         lon = in.readDouble();
@@ -79,7 +79,7 @@ public class Places implements Parcelable{
         dest.writeString(walkInsAccepted);
     }
 
-    public Places (){
+    public Place(){
         this.id = 0;
         this.lat = 0;
         this.lon = 0;
@@ -92,17 +92,17 @@ public class Places implements Parcelable{
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
-        public Places createFromParcel(Parcel in) {
-            return new Places(in);
+        public Place createFromParcel(Parcel in) {
+            return new Place(in);
         }
 
-        public Places[] newArray(int size) {
-            return new Places[size];
+        public Place[] newArray(int size) {
+            return new Place[size];
         }
     };
 
-    public static Places fromJson(JSONObject jsonObject){
-        Places newPlace = new Places();
+    public static Place fromJson(JSONObject jsonObject){
+        Place newPlace = new Place();
         try{
             JSONObject programS = jsonObject.getJSONObject("program_site");
             newPlace.id = programS.getInt("id");
@@ -133,9 +133,9 @@ public class Places implements Parcelable{
         return newPlace;
     }
 
-    public static ArrayList<Places> fromJson(JSONArray jsonArray){
+    public static ArrayList<Place> fromJson(JSONArray jsonArray){
         JSONObject placesJson;
-        ArrayList<Places> places = new ArrayList<Places>(jsonArray.length());
+        ArrayList<Place> places = new ArrayList<Place>(jsonArray.length());
         for(int i = 0; i < jsonArray.length(); i++){
             try{
                 placesJson = jsonArray.getJSONObject(i);
@@ -144,7 +144,7 @@ public class Places implements Parcelable{
                 continue;
             }
 
-            Places place = Places.fromJson(placesJson);
+            Place place = Place.fromJson(placesJson);
             if(place != null){
                 places.add(place);
             }

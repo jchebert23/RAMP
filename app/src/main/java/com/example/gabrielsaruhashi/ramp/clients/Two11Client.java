@@ -1,20 +1,6 @@
-package com.example.gabrielsaruhashi.ramp.Clients;
-
-import android.util.Log;
-
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
-import java.util.Scanner;
+package com.example.gabrielsaruhashi.ramp.clients;
 
 import com.loopj.android.http.*;
-
-import org.json.JSONObject;
-
-import cz.msebera.android.httpclient.Header;
 
 
 /**

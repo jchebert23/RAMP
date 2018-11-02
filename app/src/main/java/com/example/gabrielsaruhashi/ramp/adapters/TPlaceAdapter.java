@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp.models;
+package com.example.gabrielsaruhashi.ramp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.activities.PlaceDetailsActivity;
 import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.models.Place;
 
 import org.parceler.Parcels;
 
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by Masayuki on 10/5/18.
  */
 
-public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHolder>{
+public class TPlaceAdapter extends RecyclerView.Adapter<TPlaceAdapter.ViewHolder>{
 
     Context context;
     // Provide a direct reference to each of the views within a data item
@@ -56,7 +57,7 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
             // ensure valid position
             if (position != RecyclerView.NO_POSITION) {
                 // get place at position
-                Places place = mPlaces.get(position);
+                Place place = mPlaces.get(position);
                 Intent intent = new Intent(context, PlaceDetailsActivity.class);
                 intent.putExtra("places", Parcels.wrap(place));
                 // show the activity
@@ -65,19 +66,19 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
         }
     }
 
-    private List<Places> mPlaces;
-    public Places_Adapter(ArrayList<Places> contacts) {
+    private List<Place> mPlaces;
+    public TPlaceAdapter(ArrayList<Place> contacts) {
         Log.d("search", "SIZE" + Integer.toString(contacts.size()));
         mPlaces= contacts;
     }
 
     @Override
-    public Places_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TPlaceAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.fragment_one_place, parent, false);
+        View contactView = inflater.inflate(R.layout.item_t_place, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(contactView);
@@ -86,10 +87,10 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
 
     // Involves populating data into the item through holder
     @Override
-    public void onBindViewHolder(Places_Adapter.ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(TPlaceAdapter.ViewHolder viewHolder, final int position) {
         // Get the data model based on position
         Log.d("search", "POSITION" + Integer.toString(position));
-        final Places place = mPlaces.get(position);
+        final Place place = mPlaces.get(position);
         Log.d("search", place.toPrint());
 
         // Set item views based on your views and data model

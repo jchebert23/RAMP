@@ -1,9 +1,8 @@
-package com.example.gabrielsaruhashi.ramp.models;
+package com.example.gabrielsaruhashi.ramp.fragments;
 
 //import android.support.v4.app.Fragment;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,8 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.adapters.TPlaceAdapter;
+import com.example.gabrielsaruhashi.ramp.models.Place;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +21,7 @@ import java.util.ArrayList;
  */
 
 public class PlacesFragment extends Fragment {
-    public static PlacesFragment newInstance(ArrayList<Places> places){
+    public static PlacesFragment newInstance(ArrayList<Place> places){
         PlacesFragment fragment = new PlacesFragment();
         Bundle args = new Bundle();
         //https://stackoverflow.com/questions/42436012/how-to-put-the-arraylist-into-bundle
@@ -44,9 +44,9 @@ public class PlacesFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ArrayList<Places> places= getArguments().getParcelableArrayList("places");
+        ArrayList<Place> places= getArguments().getParcelableArrayList("places");
         RecyclerView rvPlaces = getView().findViewById(R.id.rvPlaces);
-        Places_Adapter adapter = new Places_Adapter(places);
+        TPlaceAdapter adapter = new TPlaceAdapter(places);
         rvPlaces.setAdapter(adapter);
         rvPlaces.setLayoutManager(new LinearLayoutManager(getActivity()));
         Log.e("search", "hi");
