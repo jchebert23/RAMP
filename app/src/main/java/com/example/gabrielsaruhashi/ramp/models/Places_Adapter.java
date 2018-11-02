@@ -77,7 +77,7 @@ public class Places_Adapter extends RecyclerView.Adapter<Places_Adapter.ViewHold
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.fragment_one_place, parent, false);
+        View contactView = inflater.inflate(R.layout.item_t_place, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(contactView);

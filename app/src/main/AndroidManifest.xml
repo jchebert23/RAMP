@@ -25,7 +25,6 @@
             android:name=".helpers.BaseActivity"
             android:label="@string/title_activity_base"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HouseGuideActivity"></activity>
         <activity android:name=".activities.TGuideListMapActivity">
 
             <!-- TODO: Yoyo connect this part of the map to the main activity -->
