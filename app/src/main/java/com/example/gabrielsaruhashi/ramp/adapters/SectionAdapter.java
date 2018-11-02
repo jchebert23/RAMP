@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gabrielsaruhashi.ramp.activities.GuideView;
+import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.activities.RGuideViewActivity;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
         holder.sectionTitle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // when user clicks on section
-                Intent intent = new Intent(context, GuideView.class);
+                Intent intent = new Intent(context, RGuideViewActivity.class);
                 intent.putExtra("sectionTitle", section.getTitle());
                 intent.putExtra("sectionContent", section.getContents());
                 intent.putExtra("sectionNumber", section.getNumber());

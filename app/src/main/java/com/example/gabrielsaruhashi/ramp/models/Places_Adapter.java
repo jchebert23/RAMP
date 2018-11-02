@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.gabrielsaruhashi.ramp.PlaceDetailsActivity;
+import com.example.gabrielsaruhashi.ramp.activities.PlaceDetailsActivity;
 import com.example.gabrielsaruhashi.ramp.R;
 
 import org.parceler.Parcels;

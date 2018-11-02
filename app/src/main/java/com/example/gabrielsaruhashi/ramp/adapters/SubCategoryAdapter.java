@@ -1,15 +1,18 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.activities.TGuideListMapActivity;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         /*categoryView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, SubcategoryView.class);
+                Intent i = new Intent(context, SubcategoryViewActivity.class);
                 context.startActivity(i);
             }
         }); */
@@ -59,7 +62,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i = new Intent(itemView.getContext(), SubcategoryView.class);
+                    Intent i = new Intent(itemView.getContext(), TGuideListMapActivity.class);
                     itemView.getContext().startActivity(i);
                 }
             });;

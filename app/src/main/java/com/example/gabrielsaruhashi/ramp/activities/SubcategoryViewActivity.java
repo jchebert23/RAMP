@@ -1,4 +1,4 @@
-package com.example.gabrielsaruhashi.ramp;
+package com.example.gabrielsaruhashi.ramp.activities;
 
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -11,25 +11,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.adapters.GuideAdapter;
 import com.example.gabrielsaruhashi.ramp.models.Guide;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 
 import java.util.ArrayList;
 
-public class SubcategoryView extends AppCompatActivity {
+public class SubcategoryViewActivity extends AppCompatActivity {
 
     //public final static int NUMBER_OF_CATEGORIES = 6;
     public final static ArrayList<Guide> GUIDE_DESCRIPTIONS = new ArrayList<Guide>(){
         {
             ArrayList<Section> dummyList= new ArrayList<Section>();
 
-            Guide first = new Guide("Name 1", "Content 1", dummyList);
-            Guide second = new Guide("Name 2", "Content 2", dummyList);
-            Guide third = new Guide("Name 3", "Content 3", dummyList);
-            Guide fourth = new Guide("Name 4", "Content 4", dummyList);
-            Guide fifth = new Guide("Name 5", "Content 5", dummyList);
-            Guide sixth = new Guide("Name 6", "Content 6", dummyList);
+            Guide first = new Guide("Primary Care", "Content 1", dummyList);
+            Guide second = new Guide("Women's Health", "Content 2", dummyList);
+            Guide third = new Guide("Children (Pediatrics)", "Content 3", dummyList);
+            Guide fourth = new Guide("Senior Health", "Content 4", dummyList);
+            Guide fifth = new Guide("Dental", "Content 5", dummyList);
+            Guide sixth = new Guide("Physical Therapy", "Content 6", dummyList);
             add(first);
             add(second);
             add(third);

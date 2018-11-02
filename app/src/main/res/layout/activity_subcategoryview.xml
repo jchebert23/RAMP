@@ -6,43 +6,72 @@
     android:layout_height="match_parent"
     tools:context="com.example.gabrielsaruhashi.ramp.helpers.BaseActivity">
 
+    <ImageView
+        android:id="@+id/subCategoryImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/ic_health" />
 
     <TextView
         android:id="@+id/SubCategoryTitle"
+        android:layout_below="@id/subCategoryImage"
         android:layout_width="wrap_content"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="@dimen/font_header"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/top_margin"
-        android:text="Eating Disorders" />
+        android:fontFamily="@font/roboto"
+        android:text="Primary Care"
+        android:textColor="#5c4932"
+        android:textSize="24sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/SubCategoryTitle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:fontFamily="sans-serif-condensed"-->
+        <!--android:textSize="@dimen/font_header"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginTop="@dimen/top_margin"-->
+        <!--android:text="Eating Disorders" />-->
 
     <LinearLayout
         android:id="@+id/llBanner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below = "@+id/SubCategoryTitle"
-        android:backgroundTint="#D5EAFE"
-        android:minHeight="50dp"
-        android:background="#D5EAFE">
-
+        android:backgroundTint="#fdfaf7"
+        android:minHeight="75dp"
+        android:background="#fdfaf7"
+        android:layout_marginTop="20dp">
         <TextView
-            android:id= "@+id/tvStartReading"
+            android:id= "@+id/tvResourceGuide"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="10"
             android:textSize="@dimen/font_header"
             android:fontFamily="sans-serif-condensed"
-            android:text = "Conquering Eating Disorders"
-            android:gravity="center_horizontal"
+            android:text = "Resource Guide"
+            android:textColor="#5c4932"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
             />
 
         <Button
-            android:text="+"
+            android:text="Start"
+            android:textStyle="bold"
+            android:elevation="5dp"
+            android:padding="5dp"
+            android:stateListAnimator="@null"
+            android:textAllCaps="false"
+            android:textColor="#4FCBE4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/round_shape"
+            android:layout_marginRight="40dp"/>
     </LinearLayout>
 
     <LinearLayout
@@ -50,7 +79,8 @@
         android:layout_below="@+id/llBanner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="50dp">
+        android:minHeight="50dp"
+        android:layout_marginTop = "20dp">
         <TextView
             android:id="@+id/tvOtherCategory"
             android:layout_width="wrap_content"
@@ -60,11 +90,13 @@
             android:textSize="@dimen/font_header"
             android:gravity="center"
             android:text="Other Resources:"
+            android:textColor="#5c4932"
             />
     </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="20dp"
         android:id="@+id/rvSubCategories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
