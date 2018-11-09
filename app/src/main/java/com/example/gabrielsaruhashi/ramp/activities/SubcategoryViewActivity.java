@@ -1,5 +1,6 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
+import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.R;
@@ -43,7 +45,6 @@ public class SubcategoryViewActivity extends AppCompatActivity {
 
     SubCategory dummySubCategory = new SubCategory("Title", "Catch Phrase", 255, 0 ,0, GUIDE_DESCRIPTIONS);
 
-
     //The array list that stores the guides
     ArrayList<Guide> guides;
 
@@ -59,7 +60,6 @@ public class SubcategoryViewActivity extends AppCompatActivity {
         Log.e("Error", guides.toString());
         //initialize the adapter
 
-
         adapter = new GuideAdapter(guides);
 
         rvSubCategories = (RecyclerView) findViewById(R.id.rvSubCategories);
@@ -69,9 +69,6 @@ public class SubcategoryViewActivity extends AppCompatActivity {
 
         TextView generalTitle = findViewById(R.id.SubCategoryTitle);
         generalTitle.setText("Eating Disorders");
-
-
-
 
         //getCurrentCategories();
     }
@@ -103,7 +100,13 @@ public class SubcategoryViewActivity extends AppCompatActivity {
 
     }
 
+    //https://stackoverflow.com/questions/5588804/android-button-setonclicklistener-design
+    public void onClickListen (View view) {
+        //https://stackoverflow.com/questions/6121797/android-how-to-change-layout-on-button-click
+        Intent intenMain = new Intent(SubcategoryViewActivity.this, RGuideIndexActivity.class);
+        SubcategoryViewActivity.this.startActivity(intenMain);
 
+    }
     //get the list of current objects
     private void getCurrentCategories(){
         for(int i = 0; i < GUIDE_DESCRIPTIONS.size(); i++){

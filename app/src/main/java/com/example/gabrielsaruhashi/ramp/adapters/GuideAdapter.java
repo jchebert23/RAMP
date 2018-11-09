@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
         LayoutInflater inflater = LayoutInflater.from(context);
         //create the view using the item_category layout
         View subCategoryView = inflater.inflate(R.layout.item_guide, parent, false);
+
 
         //color = context.getString(R.integer.subCategoryDiffR)
         subCategoryView.setOnClickListener(new View.OnClickListener() {
@@ -88,11 +90,21 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.ViewHolder> 
         //track view objects
         TextView TvGeneralTitle;
         LinearLayout llBanner;
+        ImageButton arrow;
+
 
         public ViewHolder(View itemView) {
             super(itemView);
             TvGeneralTitle = itemView.findViewById(R.id.generalTitle);
             llBanner = itemView.findViewById(R.id.llBanner);
+            arrow = itemView.findViewById(R.id.ForwardButton);
+            arrow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(view.getContext(), TGuideListMapActivity.class);
+                    view.getContext().startActivity(i);
+                }
+            });
         }
     }
 }
