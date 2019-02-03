@@ -14,6 +14,7 @@ public class Category {
     private ArrayList<SubCategory> subcategories;
     private ArrayList<Resources> icons;
     private int category_image;
+    private String iconURL;
 
     public Category(){
         super();
@@ -32,9 +33,16 @@ public class Category {
         this.category_image = category_image;
     }
 
+    public Category(String status, String iconURL) {
+        this.status = status;
+        this.iconURL = iconURL;
+    }
+
     public String getStatus() {
         return status;
     }
+
+    public String getIconURL() { return iconURL; }
 
     public String getStatusImagePath() {
         return statusImagePath;
@@ -72,3 +80,4 @@ public class Category {
         this.category_image = category_image;
     }
 }
+

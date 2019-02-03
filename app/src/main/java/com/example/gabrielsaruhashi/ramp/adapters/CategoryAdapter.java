@@ -57,7 +57,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.categoryTitle.setText(category.getStatus());
 
         Glide.with(context)
-                .load(category.getCategory_image())
+                .load(category.getIconURL())
                 .into(holder.categoryImage);
     }
 
