@@ -89,11 +89,18 @@ public class TGuideListMapActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Location userlocation) {
                             // Got last known location. In some rare situations this can be null.
-                            Log.d("search", "USER LOCATION" + userlocation.toString());
-                            ulocation = userlocation;
-                            uLatLong = new LatLng(userlocation.getLatitude(), userlocation.getLongitude());
                             if (userlocation != null) {
                                 // Logic to handle location object
+                                Log.d("search", "USER LOCATION" + userlocation.toString());
+                                ulocation = userlocation;
+                                uLatLong = new LatLng(userlocation.getLatitude(), userlocation.getLongitude());
+                            }
+                            else{
+                                //QUESTION: WHERE DO USERS GRANT PERMISSION FOR LOCATION?
+                                //https://stackoverflow.com/questions/3500197/how-to-display-toast-in-android
+//                                Toast.makeText(TGuideListMapActivity.this, "User ",
+//                                        Toast.LENGTH_LONG).show();
+                                uLatLong = new LatLng(41.3083, -72.9279);
                             }
                         }
                     });
@@ -179,7 +186,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
                                     map.addMarker(new MarkerOptions()
                                         .position(uLatLong)
                                         .icon(BitmapDescriptorFactory.defaultMarker(180)));
-                                    Log.d("search", "hello latitude: " + ulocation.getLatitude() + "longitude" + ulocation.getLongitude());
+                                    //Log.d("search", "hello latitude: " + ulocation.getLatitude() + "longitude" + ulocation.getLongitude());
                                     LatLng location = null;
                                     for(int i = 0; i < places.size(); i++){
                                         location = new LatLng(places.get(i).getLat(), places.get(i).getLon());
