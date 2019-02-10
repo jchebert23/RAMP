@@ -1,21 +1,25 @@
 package com.example.gabrielsaruhashi.ramp.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by Masayuki on 4/5/18.
  * Created by tylershen on 4/12/18.
  */
-
+@Parcel
 public class SubCategory {
     String title;
     String catchPhrase;
     ArrayList<Guide> guides;
-
+    int hasGuide;
 
     int r, g, b;
 
+    public SubCategory() {
 
+    }
     public SubCategory(String title, String catchPhrase, int r, int g, int b, ArrayList<Guide> guides) {
         this.title = title;
         this.catchPhrase = catchPhrase;
@@ -23,6 +27,11 @@ public class SubCategory {
         this.g = g;
         this.b = b;
         this.guides = guides;
+    }
+
+    public SubCategory(String title, int hasGuide) {
+        this.title = title;
+        this.hasGuide = hasGuide;
     }
 
     public String getTitle() {

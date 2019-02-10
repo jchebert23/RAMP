@@ -1,9 +1,9 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -14,10 +14,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.adapters.GuideAdapter;
+import com.example.gabrielsaruhashi.ramp.adapters.SubCategoryAdapter;
+import com.example.gabrielsaruhashi.ramp.models.Category;
 import com.example.gabrielsaruhashi.ramp.models.Guide;
 import com.example.gabrielsaruhashi.ramp.models.Section;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -46,31 +49,35 @@ public class SubcategoryViewActivity extends AppCompatActivity {
     SubCategory dummySubCategory = new SubCategory("Title", "Catch Phrase", 255, 0 ,0, GUIDE_DESCRIPTIONS);
 
     //The array list that stores the guides
-    ArrayList<Guide> guides;
+    ArrayList<SubCategory> subcats = new ArrayList<>();
 
     RecyclerView rvSubCategories;
-    GuideAdapter adapter;
+    SubCategoryAdapter adapter;
+    Category category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategoryview);
 
-        guides = dummySubCategory.getGuides();
-        Log.e("Error", guides.toString());
+//        guides = dummySubCategory.getGuides();
+        // Log.e("Error", guides.toString());
         //initialize the adapter
 
-        adapter = new GuideAdapter(guides);
+        adapter = new SubCategoryAdapter(subcats);
 
         rvSubCategories = (RecyclerView) findViewById(R.id.rvSubCategories);
         rvSubCategories.setLayoutManager(new LinearLayoutManager(this));
         rvSubCategories.setAdapter(adapter);
 
+        category = (Category) Parcels.unwrap(getIntent().getParcelableExtra(Category.class.getSimpleName()));
+        Log.i("SubcategoryViewActivity", category.toString());
+        Log.i("SubcategoryViewActivity", category.getStatus());
 
         TextView generalTitle = findViewById(R.id.SubCategoryTitle);
-        generalTitle.setText("Eating Disorders");
+        generalTitle.setText(category.getStatus().toString());
 
-        //getCurrentCategories();
+        getCurrentSubCategories();
     }
 
     @Override
@@ -108,13 +115,20 @@ public class SubcategoryViewActivity extends AppCompatActivity {
 
     }
     //get the list of current objects
-    private void getCurrentCategories(){
-        for(int i = 0; i < GUIDE_DESCRIPTIONS.size(); i++){
-            Guide guide = GUIDE_DESCRIPTIONS.get(i);
-            Log.e("GUIDE", guide.getName());
-            guides.add(guide);
-            //adapter.notifyItemInserted(guides.size() - 1);
+//    private void getCurrentSubCategories(){
+////        for(int i = 0; i < GUIDE_DESCRIPTIONS.size(); i++){
+////            Guide guide = GUIDE_DESCRIPTIONS.get(i);
+////            Log.e("GUIDE", guide.getName());
+////            guides.add(guide);
+////            //adapter.notifyItemInserted(guides.size() - 1);
+////
+////        }
+////    }
 
+    private void getCurrentSubCategories() {
+        for (int i = 0; i < category.getSubcategories().size(); i++) {
+            subcats.add(category.getSubcategories().get(i));
+            adapter.notifyItemInserted(category.getSubcategories().size() - 1);
         }
     }
 }

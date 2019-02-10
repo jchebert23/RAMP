@@ -13,6 +13,7 @@ import android.widget.SearchView;
 import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.adapters.CategoryAdapter;
 import com.example.gabrielsaruhashi.ramp.models.Category;
+import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -107,11 +108,23 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 try {
                     JSONArray results = response.getJSONArray("categories");
-                    // iterate through array, create movie objects
+
+                    // iterate through array, create category objects
                     for (int i = 0; i < results.length(); i++) {
-                        Category newCategory = new Category(results.getJSONObject(i).getString("name"), results.getJSONObject(i).getString("icon"));
+                        ArrayList<SubCategory> subcats = new ArrayList<>();
+                        JSONArray jsonsubs = results.getJSONObject(i).getJSONArray("subcategories");
+                        Log.i("MainActivity", jsonsubs.toString());
+                        Log.i("MainActivity", jsonsubs.getJSONObject(0).toString());
+                        Log.i("MainActivity", "get name: " + jsonsubs.getJSONObject(0).getString("name"));
+                        for (int j = 0; j < jsonsubs.length(); j++) {
+                            SubCategory subcat = new SubCategory(jsonsubs.getJSONObject(j).getString("name"), jsonsubs.getJSONObject(j).getInt("hasGuide"));
+                            Log.i("MainActivity", "subcat:" + subcat.toString());
+                            subcats.add(subcat);
+                        }
+                        Category newCategory = new Category(results.getJSONObject(i).getString("name"), results.getJSONObject(i).getString("icon"), subcats);
                         apiCats.add(newCategory);
                         adapter.notifyItemInserted(apiCats.size() - 1);
+                        Log.i("MainActivity", apiCats.toString());
                     }
                 } catch (JSONException e) {
                     Log.d("MainActivity", "failed to parse categories");
@@ -122,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("APIClient", "Failed");
             }
         });
-
 
     }
 

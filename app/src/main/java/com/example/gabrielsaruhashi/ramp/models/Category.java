@@ -2,22 +2,24 @@ package com.example.gabrielsaruhashi.ramp.models;
 
 import android.content.res.Resources;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
 /**
  * Created by Masayuki on 3/8/18.
  */
-
+@Parcel
 public class Category {
-    private String status;
+    public String status;
     private String statusImagePath;
-    private ArrayList<SubCategory> subcategories;
+    public ArrayList<SubCategory> subcategories;
     private ArrayList<Resources> icons;
     private int category_image;
     private String iconURL;
 
-    public Category(){
-        super();
+    public Category() {
+
     }
 
     public Category(String status, String statusImagePath, ArrayList<SubCategory> subcategories, ArrayList<Resources> icons, int category_image) {
@@ -33,9 +35,10 @@ public class Category {
         this.category_image = category_image;
     }
 
-    public Category(String status, String iconURL) {
+    public Category(String status, String iconURL, ArrayList<SubCategory> subcategories) {
         this.status = status;
         this.iconURL = iconURL;
+        this.subcategories = subcategories;
     }
 
     public String getStatus() {
