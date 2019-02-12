@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         rvCategories.setLayoutManager(new GridLayoutManager(this, 2));
         rvCategories.setAdapter(adapter);
         // get reference to searchview
-        svSearchview = (SearchView) findViewById(R.id.svSearchbar);
-        svSearchview.setIconifiedByDefault(false);  // set the default or resting state of the search field
+        //svSearchview = (SearchView) findViewById(R.id.svSearchbar);
+        //svSearchview.setIconifiedByDefault(false);  // set the default or resting state of the search field
 
 
 
