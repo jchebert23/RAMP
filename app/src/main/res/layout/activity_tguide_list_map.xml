@@ -17,6 +17,7 @@
         app:srcCompat="@drawable/ic_health" />
 
     <TextView
+        android:id="@+id/tvMapTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -51,6 +52,15 @@
             android:fontFamily="@font/roboto"
             android:textStyle="bold" />
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvSeeGuide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="See our primary care guide!"
+        android:textAlignment="center"
+        android:textColor="@color/material_brown"
+        android:visibility="invisible" />
 
 <RelativeLayout
     android:layout_width="match_parent"

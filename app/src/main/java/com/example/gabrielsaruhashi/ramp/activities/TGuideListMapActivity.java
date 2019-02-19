@@ -11,12 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.gabrielsaruhashi.ramp.clients.Two11Client;
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.models.Place;
+import com.example.gabrielsaruhashi.ramp.clients.Two11Client;
 import com.example.gabrielsaruhashi.ramp.fragments.PlacesFragment;
+import com.example.gabrielsaruhashi.ramp.models.Place;
+import com.example.gabrielsaruhashi.ramp.models.SubCategory;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -64,6 +66,9 @@ public class TGuideListMapActivity extends AppCompatActivity {
      */
     boolean isMapView = false;
     private PlacesFragment placesFragment;
+    SubCategory subcategory;
+    TextView title;
+    TextView tvSeeGuide;
 
     private final static String KEY_LOCATION = "location";
     ArrayList<Place> places = new ArrayList<>();
@@ -118,6 +123,24 @@ public class TGuideListMapActivity extends AppCompatActivity {
             // is not null.
             mCurrentLocation = savedInstanceState.getParcelable(KEY_LOCATION);
         }
+        title = findViewById(R.id.tvMapTitle);
+        tvSeeGuide = findViewById(R.id.tvSeeGuide);
+
+        subcategory = Parcels.unwrap(getIntent().getParcelableExtra(SubCategory.class.getSimpleName()));
+        title.setText(subcategory.getTitle().toString());
+        if (subcategory.hasGuide() == 1) {
+            // has guide, show text to view guide
+            tvSeeGuide.setVisibility(View.VISIBLE);
+            tvSeeGuide.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(TGuideListMapActivity.this, RGuideIndexActivity.class);
+                    i.putExtra(SubCategory.class.getSimpleName(), Parcels.wrap(subcategory));
+                    startActivity(i);
+                }
+            });
+        }
+
         // load places fragment
         Two11Client newClient = new Two11Client();
         newClient.search("enfield", new JsonHttpResponseHandler() {
@@ -178,7 +201,6 @@ public class TGuideListMapActivity extends AppCompatActivity {
                         places.addAll(Place.fromJson(placesJson));
                         // TODO (masayukinagase) instead of doing this try / catch, move it to an AsyncTask
                         if (mapFragment != null) {
-                            Log.d("search", "entered");
                             mapFragment.getMapAsync(new OnMapReadyCallback() {
                                 @Override
                                 public void onMapReady(GoogleMap map) {

@@ -14,6 +14,8 @@ import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.activities.SubcategoryViewActivity;
 import com.example.gabrielsaruhashi.ramp.models.Category;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 
 /**
@@ -37,13 +39,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         View categoryView = inflater.inflate(R.layout.item_category, parent, false);
 
 
-        categoryView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, SubcategoryViewActivity.class);
-                context.startActivity(i);
-            }
-        });
+//        categoryView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent i = new Intent(context, SubcategoryViewActivity.class);
+//                context.startActivity(i);
+//            }
+//        });
         return new ViewHolder(categoryView);
 
     }
@@ -57,7 +60,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.categoryTitle.setText(category.getStatus());
 
         Glide.with(context)
-                .load(category.getCategory_image())
+                .load(category.getIconURL())
                 .into(holder.categoryImage);
     }
 
@@ -68,7 +71,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     //create viewHolder as a static inner class
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         //track view objects
         ImageView categoryImage;
@@ -79,6 +82,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             //lookup view objects by id
             categoryImage = itemView.findViewById(R.id.categoryImage);
             categoryTitle = itemView.findViewById(R.id.categoryTitle);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick (View v) {
+            int position = getAdapterPosition();
+            Category category = categories.get(position);
+            Intent i = new Intent(context, SubcategoryViewActivity.class);
+            i.putExtra(Category.class.getSimpleName(), Parcels.wrap(category));
+            context.startActivity(i);
         }
     }
 }

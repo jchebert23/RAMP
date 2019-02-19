@@ -1,9 +1,12 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -14,63 +17,58 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.R;
-import com.example.gabrielsaruhashi.ramp.adapters.GuideAdapter;
-import com.example.gabrielsaruhashi.ramp.models.Guide;
-import com.example.gabrielsaruhashi.ramp.models.Section;
+import com.example.gabrielsaruhashi.ramp.adapters.SubCategoryAdapter;
+import com.example.gabrielsaruhashi.ramp.models.Category;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
 public class SubcategoryViewActivity extends AppCompatActivity {
 
     //public final static int NUMBER_OF_CATEGORIES = 6;
-    public final static ArrayList<Guide> GUIDE_DESCRIPTIONS = new ArrayList<Guide>(){
+    public final static ArrayList<SubCategory> GUIDE_DESCRIPTIONS = new ArrayList<SubCategory>(){
         {
-            ArrayList<Section> dummyList= new ArrayList<Section>();
-
-            Guide first = new Guide("Primary Care", "Content 1", dummyList);
-            Guide second = new Guide("Women's Health", "Content 2", dummyList);
-            Guide third = new Guide("Children (Pediatrics)", "Content 3", dummyList);
-            Guide fourth = new Guide("Senior Health", "Content 4", dummyList);
-            Guide fifth = new Guide("Dental", "Content 5", dummyList);
-            Guide sixth = new Guide("Physical Therapy", "Content 6", dummyList);
+            SubCategory first = new SubCategory("Primary Care", 0);
+            SubCategory second = new SubCategory("Women's Health", 0);
+            SubCategory third = new SubCategory("Children (Pediatrics)", 0);
             add(first);
             add(second);
             add(third);
-            add(fourth);
-            add(fifth);
-            add(sixth);
         }
     };
 
-    SubCategory dummySubCategory = new SubCategory("Title", "Catch Phrase", 255, 0 ,0, GUIDE_DESCRIPTIONS);
-
     //The array list that stores the guides
-    ArrayList<Guide> guides;
+    ArrayList<SubCategory> subcats = new ArrayList<>();
 
     RecyclerView rvSubCategories;
-    GuideAdapter adapter;
+    SubCategoryAdapter adapter;
+    Category category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcategoryview);
 
-        guides = dummySubCategory.getGuides();
-        Log.e("Error", guides.toString());
-        //initialize the adapter
 
-        adapter = new GuideAdapter(guides);
+        adapter = new SubCategoryAdapter(subcats);
 
         rvSubCategories = (RecyclerView) findViewById(R.id.rvSubCategories);
         rvSubCategories.setLayoutManager(new LinearLayoutManager(this));
         rvSubCategories.setAdapter(adapter);
 
+        category = (Category) Parcels.unwrap(getIntent().getParcelableExtra(Category.class.getSimpleName()));
 
         TextView generalTitle = findViewById(R.id.SubCategoryTitle);
-        generalTitle.setText("Eating Disorders");
+        generalTitle.setText(category.getStatus().toString());
 
-        //getCurrentCategories();
+        if (haveNetworkConnection()) {
+            // get subcats from API if internet
+            getCurrentSubCategories();
+        } else {
+            getHardCoded();
+        }
     }
 
     @Override
@@ -103,18 +101,43 @@ public class SubcategoryViewActivity extends AppCompatActivity {
     //https://stackoverflow.com/questions/5588804/android-button-setonclicklistener-design
     public void onClickListen (View view) {
         //https://stackoverflow.com/questions/6121797/android-how-to-change-layout-on-button-click
-        Intent intenMain = new Intent(SubcategoryViewActivity.this, RGuideIndexActivity.class);
-        SubcategoryViewActivity.this.startActivity(intenMain);
-
+        Intent intentMain = new Intent(SubcategoryViewActivity.this, RGuideIndexActivity.class);
+        intentMain.putExtra(Category.class.getSimpleName(), Parcels.wrap(category));
+        SubcategoryViewActivity.this.startActivity(intentMain);
     }
-    //get the list of current objects
-    private void getCurrentCategories(){
+
+    // if no internet
+    private void getHardCoded(){
         for(int i = 0; i < GUIDE_DESCRIPTIONS.size(); i++){
-            Guide guide = GUIDE_DESCRIPTIONS.get(i);
-            Log.e("GUIDE", guide.getName());
-            guides.add(guide);
-            //adapter.notifyItemInserted(guides.size() - 1);
+            SubCategory subcat = GUIDE_DESCRIPTIONS.get(i);
+            subcats.add(subcat);
+            adapter.notifyItemInserted(subcats.size() - 1);
 
         }
+    }
+
+    private void getCurrentSubCategories() {
+        for (int i = 0; i < category.getSubcategories().size(); i++) {
+            subcats.add(category.getSubcategories().get(i));
+            adapter.notifyItemInserted(category.getSubcategories().size() - 1);
+        }
+    }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected()) {
+                    haveConnectedWifi = true;
+                }
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 }
