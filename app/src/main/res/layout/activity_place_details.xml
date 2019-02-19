@@ -93,6 +93,13 @@
             android:text ="MAP"
             android:id="@+id/mapButton"
             android:onClick="onClickListen"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="SHARE"
+            android:id="@+id/shareButton"
+            android:onClick="onShareListen"
+            android:layout_toLeftOf="@+id/mapButton"/>
 
     </RelativeLayout>
 
