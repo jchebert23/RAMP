@@ -38,6 +38,8 @@ public class SubCategory {
         return title;
     }
 
+    public int hasGuide() { return hasGuide; }
+
     public String getCatchPhrase() {
         return catchPhrase;
     }

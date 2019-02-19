@@ -55,10 +55,9 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
         @Override
         public void onClick(View view) {
             int position = getAdapterPosition(); // gets item position
-            Log.d("SectionAdapter", "got into on click");
-                Section section = sections.get(position);
-                // We can access the data within the views
-                Toast.makeText(context, section.getTitle(), Toast.LENGTH_SHORT).show();
+            Section section = sections.get(position);
+            // We can access the data within the views
+            Toast.makeText(context, section.getTitle(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -80,7 +79,6 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
                 intent.putExtra("sectionContent", section.getContents());
                 intent.putExtra("sectionNumber", section.getNumber());
                 context.startActivity(intent);
-                Log.d("SectionAdapter", "launched guide view activity");
             }
         });
     }

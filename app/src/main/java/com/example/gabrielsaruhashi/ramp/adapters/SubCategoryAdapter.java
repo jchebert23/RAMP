@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import com.example.gabrielsaruhashi.ramp.R;
 import com.example.gabrielsaruhashi.ramp.activities.TGuideListMapActivity;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -47,7 +50,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
     }
 
     //create viewHolder as a static inner class
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView TvGeneralTitle;
         LinearLayout llBanner;
@@ -59,13 +62,16 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
             TvGeneralTitle = itemView.findViewById(R.id.generalTitle);
             llBanner = itemView.findViewById(R.id.llBanner);
             arrow = itemView.findViewById(R.id.ForwardButton);
-            arrow.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent i = new Intent(view.getContext(), TGuideListMapActivity.class);
-                    view.getContext().startActivity(i);
-                }
-            });
+            arrow.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            SubCategory subcat = subcategories.get(position);
+            Intent i = new Intent(view.getContext(), TGuideListMapActivity.class);
+            i.putExtra(SubCategory.class.getSimpleName(), Parcels.wrap(subcat));
+            view.getContext().startActivity(i);
         }
     }
 
