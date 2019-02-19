@@ -71,21 +71,44 @@
         android:layout_height="2dp"
         android:background="@color/material_light_light_brown"/>
 
-    <TextView
-        android:id="@+id/tvAddress"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/horizontalDiv3"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/roboto"
-        android:lineSpacingExtra="8sp"
-        android:text="" />
+        android:id = "@+id/rowAdress"
+        android:layout_below="@id/horizontalDiv3">
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/roboto"
+            android:lineSpacingExtra="8sp"
+            android:layout_alignParentLeft = "true"
+            android:text="" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight = "true"
+            android:text ="MAP"
+            android:id="@+id/mapButton"
+            android:onClick="onClickListen"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text ="SHARE"
+            android:id="@+id/shareButton"
+            android:onClick="onShareListen"
+            android:layout_toLeftOf="@+id/mapButton"/>
+
+    </RelativeLayout>
+
+    <!--</LinearLayout>-->
 
     <View
         android:id="@+id/horizontalDiv4"
         android:layout_width="wrap_content"
-        android:layout_below="@id/tvAddress"
+        android:layout_below="@id/rowAdress"
         android:layout_marginTop="2dp"
         android:layout_height="2dp"
         android:background="@color/material_light_light_brown"/>

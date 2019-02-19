@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--https://developers.google.com/maps/documentation/android-sdk/location-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -43,6 +46,13 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+        <provider
+            android:authorities="@string/facebook_authorities_url"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
 
         <activity android:name=".activities.SubcategoryViewActivity"></activity>
         <activity android:name=".activities.PlaceDetailsActivity"></activity>

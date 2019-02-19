@@ -102,6 +102,7 @@ public class RGuideIndexActivity extends AppCompatActivity {
                     // iterate through array, create section objects
                     for (int i = 0; i < results.length(); i++) {
                         Section section = new Section(results.getJSONObject(i).getString("title"), results.getJSONObject(i).getString("content"), i);
+                        Log.i("RGuideIndexActivity", results.getJSONObject(i).getString("content"));
                         sections.add(section);
                         adapter.notifyItemInserted(sections.size() - 1);
                     }

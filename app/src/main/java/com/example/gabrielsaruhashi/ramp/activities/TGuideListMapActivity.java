@@ -3,8 +3,10 @@ package com.example.gabrielsaruhashi.ramp.activities;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,14 +19,19 @@ import com.example.gabrielsaruhashi.ramp.clients.Two11Client;
 import com.example.gabrielsaruhashi.ramp.fragments.PlacesFragment;
 import com.example.gabrielsaruhashi.ramp.models.Place;
 import com.example.gabrielsaruhashi.ramp.models.SubCategory;
+import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
@@ -49,6 +56,10 @@ public class TGuideListMapActivity extends AppCompatActivity {
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
     private long FASTEST_INTERVAL = 5000; /* 5 secs */
 
+    //https://developer.android.com/training/location/retrieve-current#java
+    //To get user location
+    private FusedLocationProviderClient mFusedLocationClient;
+
     /*
     Boolean for switching between list view (default) and map view.
     Depending on boolean value, upon click of button either list view or map view will be loaded into the fragment container.
@@ -62,6 +73,8 @@ public class TGuideListMapActivity extends AppCompatActivity {
     private final static String KEY_LOCATION = "location";
     ArrayList<Place> places = new ArrayList<>();
 
+    Location ulocation;
+    LatLng uLatLong;
 
     /*
      * Define a request code to send to Google Play services This code is
@@ -70,6 +83,35 @@ public class TGuideListMapActivity extends AppCompatActivity {
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //https://developer.android.com/training/location/retrieve-current#java
+        //To get user location
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        if(PermissionChecker.checkSelfPermission(getApplicationContext(),"android.permission.ACCESS_FINE_LOCATION")
+                == PermissionChecker.PERMISSION_GRANTED) {
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location userlocation) {
+                            // Got last known location. In some rare situations this can be null.
+                            if (userlocation != null) {
+                                // Logic to handle location object
+                                Log.d("search", "USER LOCATION" + userlocation.toString());
+                                ulocation = userlocation;
+                                uLatLong = new LatLng(userlocation.getLatitude(), userlocation.getLongitude());
+                            }
+                            else{
+                                //QUESTION: WHERE DO USERS GRANT PERMISSION FOR LOCATION?
+                                //https://stackoverflow.com/questions/3500197/how-to-display-toast-in-android
+//                                Toast.makeText(TGuideListMapActivity.this, "User ",
+//                                        Toast.LENGTH_LONG).show();
+                                uLatLong = new LatLng(41.3083, -72.9279);
+                            }
+                        }
+                    });
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tguide_list_map);
         if (TextUtils.isEmpty(getResources().getString(R.string.google_map_API_key))) {
@@ -162,6 +204,11 @@ public class TGuideListMapActivity extends AppCompatActivity {
                             mapFragment.getMapAsync(new OnMapReadyCallback() {
                                 @Override
                                 public void onMapReady(GoogleMap map) {
+                                    Log.d("search", "ready");
+                                    map.addMarker(new MarkerOptions()
+                                        .position(uLatLong)
+                                        .icon(BitmapDescriptorFactory.defaultMarker(180)));
+                                    //Log.d("search", "hello latitude: " + ulocation.getLatitude() + "longitude" + ulocation.getLongitude());
                                     LatLng location = null;
                                     for(int i = 0; i < places.size(); i++){
                                         location = new LatLng(places.get(i).getLat(), places.get(i).getLon());
@@ -183,8 +230,15 @@ public class TGuideListMapActivity extends AppCompatActivity {
 
                                         Log.d("search", "latitude:" + places.get(i).getLat());
                                     }
-                                    map.moveCamera(CameraUpdateFactory.newLatLng(location));
-                                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(location, 8.0f));
+
+
+                                    //https://stackoverflow.com/questions/37428464/how-can-i-check-permission-under-api-level-23
+                                    //https://stackoverflow.com/questions/32491960/android-check-permission-for-locationmanager
+                                    //https://stackoverflow.com/questions/33407250/checkselfpermission-method-is-not-working-in-targetsdkversion-22
+                                    //https://developers.google.com/android/reference/com/google/android/gms/maps/model/LatLngBounds
+                                    //https://developers.google.com/maps/documentation/android-sdk/views
+                                    map.moveCamera(CameraUpdateFactory.newLatLng(uLatLong));
+                                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(uLatLong, 12.0f));
                                     loadMap(map);
                                 }
                             });

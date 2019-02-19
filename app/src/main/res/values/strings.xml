@@ -4,6 +4,8 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_job_guide">JobGuideActivity</string>
     <string name="google_map_API_key">AIzaSyA9q4QTCDzzDiy9thqEOosy4s35BT9P2Vc</string>
+    <string name="facebook_app_id">804711546576033</string>
+    <string name="facebook_authorities_url">com.facebook.app.FacebookContentProvider804711546576033</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
