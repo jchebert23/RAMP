@@ -1,19 +1,9 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
-import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
-
-import android.support.v7.app.AppCompatActivity;
-
-import android.support.v7.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,9 +14,6 @@ import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareDialog;
 
 import org.parceler.Parcels;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class PlaceDetailsActivity extends AppCompatActivity {
@@ -40,6 +27,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
     TextView tvWalkIns;
     String address;
     ShareDialog shareDialog;
+    TextView tvCategoryTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +35,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_place_details);
         tvName = findViewById(R.id.tvName);
         tvHours = findViewById(R.id.tvHours);
+        tvCategoryTitle = findViewById(R.id.tvCategoryTitle);
         tvPhoneNumber = findViewById(R.id.tvPhoneNumber);
         tvDescription = findViewById(R.id.tvDescription);
         tvAddress = findViewById(R.id.tvAddress);
@@ -63,6 +52,7 @@ public class PlaceDetailsActivity extends AppCompatActivity {
         tvPhoneNumber.setText(place.getPhoneNumer());
         tvAddress.setText(place.getAddress());
         address = place.getAddress();
+        tvCategoryTitle.setText(getIntent().getStringExtra("categoryTitle"));
         tvDescription.setText(place.getDescription());
         if (place.getWalkIns().equals("null")) {
             tvWalkIns.setText("No walk-ins accepted");

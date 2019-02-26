@@ -66,6 +66,12 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         //get the movie data at the specified position
         final Section section = sections.get(position);
+        ArrayList<String> sectionNames = new ArrayList<>();
+        ArrayList<String> sectionContents = new ArrayList<>();
+        for (int i = 0; i < sections.size(); i++) {
+            sectionNames.add(sections.get(i).getTitle());
+            sectionContents.add(sections.get(i).getContents());
+        }
         //populate the view with the category data
         holder.sectionTitle.setText(section.getTitle());
         int num = section.getNumber() + 1;
@@ -73,11 +79,20 @@ public class SectionAdapter extends RecyclerView.Adapter<SectionAdapter.ViewHold
 
         holder.sectionTitle.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                ArrayList<String> sectionNames = new ArrayList<>();
+                ArrayList<String> sectionContents = new ArrayList<>();
+                for (int i = 0; i < sections.size(); i++) {
+                    sectionNames.add(sections.get(i).getTitle());
+                    sectionContents.add(sections.get(i).getContents());
+                }
                 // when user clicks on section
                 Intent intent = new Intent(context, RGuideViewActivity.class);
                 intent.putExtra("sectionTitle", section.getTitle());
                 intent.putExtra("sectionContent", section.getContents());
                 intent.putExtra("sectionNumber", section.getNumber());
+                intent.putExtra("sectionNames", sectionNames);
+                intent.putExtra("sectionContents", sectionContents);
+
                 context.startActivity(intent);
             }
         });

@@ -3,14 +3,13 @@ package com.example.gabrielsaruhashi.ramp.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.gabrielsaruhashi.ramp.activities.PlaceDetailsActivity;
 import com.example.gabrielsaruhashi.ramp.R;
+import com.example.gabrielsaruhashi.ramp.activities.PlaceDetailsActivity;
 import com.example.gabrielsaruhashi.ramp.models.Place;
 
 import org.parceler.Parcels;
@@ -60,6 +59,7 @@ public class TPlaceAdapter extends RecyclerView.Adapter<TPlaceAdapter.ViewHolder
                 Place place = mPlaces.get(position);
                 Intent intent = new Intent(context, PlaceDetailsActivity.class);
                 intent.putExtra("places", Parcels.wrap(place));
+                intent.putExtra("categoryTitle", place.getCategoryTitle());
                 // show the activity
                 context.startActivity(intent);
             }
@@ -68,7 +68,6 @@ public class TPlaceAdapter extends RecyclerView.Adapter<TPlaceAdapter.ViewHolder
 
     private List<Place> mPlaces;
     public TPlaceAdapter(ArrayList<Place> contacts) {
-        Log.d("search", "SIZE" + Integer.toString(contacts.size()));
         mPlaces= contacts;
     }
 
@@ -89,9 +88,7 @@ public class TPlaceAdapter extends RecyclerView.Adapter<TPlaceAdapter.ViewHolder
     @Override
     public void onBindViewHolder(TPlaceAdapter.ViewHolder viewHolder, final int position) {
         // Get the data model based on position
-        Log.d("search", "POSITION" + Integer.toString(position));
         final Place place = mPlaces.get(position);
-        Log.d("search", place.toPrint());
 
         // Set item views based on your views and data model
 //        TextView id = viewHolder.id;

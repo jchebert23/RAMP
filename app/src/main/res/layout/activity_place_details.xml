@@ -16,7 +16,7 @@
         app:srcCompat="@drawable/ic_health" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvCategoryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -29,7 +29,7 @@
     <View
         android:id="@+id/horizontalDiv"
         android:layout_width="wrap_content"
-        android:layout_below="@id/textView"
+        android:layout_below="@id/tvCategoryTitle"
         android:layout_marginTop="20dp"
         android:layout_height="2dp"
         android:background="@color/material_light_light_brown"/>
