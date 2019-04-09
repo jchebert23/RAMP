@@ -37,7 +37,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -128,7 +131,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
 
         subcategory = Parcels.unwrap(getIntent().getParcelableExtra(SubCategory.class.getSimpleName()));
         title.setText(subcategory.getTitle().toString());
-        tvDescript.setText("Description of " + subcategory.getTitle().toString() + " goes here.");
+        // tvDescript.setText(subcategory.getCatchPhrase().toString());
         if (subcategory.hasGuide() == 1) {
             // has guide, show text to view guide
             tvSeeGuide.setVisibility(View.VISIBLE);
@@ -141,6 +144,30 @@ public class TGuideListMapActivity extends AppCompatActivity {
                     startActivity(i);
                 }
             });
+        }
+        String parameter = "";
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONArray m_jArry = obj.getJSONArray("pairs");
+            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> m_li;
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                Log.d("Details-->", jo_inside.getString("primary_care"));
+                String formula_value = jo_inside.getString("primary_care");
+                parameter = jo_inside.getString("primary_care");
+                // String url_value = jo_inside.getString("url");
+
+                //Add your values in your `ArrayList` as below:
+                m_li = new HashMap<String, String>();
+                m_li.put("formule", formula_value);
+                // m_li.put("url", url_value);
+
+                formList.add(m_li);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
         // load places fragment
@@ -165,6 +192,25 @@ public class TGuideListMapActivity extends AppCompatActivity {
             }
         });
     }
+
+    public String loadJSONFromAsset() {
+        Log.d("TGuideListMapActivity", "loadJSON");
+        String json = null;
+        try {
+            InputStream is = getAssets().open("data.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+
 
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;

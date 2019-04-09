@@ -12,6 +12,8 @@ import com.example.gabrielsaruhashi.ramp.models.Section;
 
 import java.util.ArrayList;
 
+import ru.noties.markwon.Markwon;
+
 /**
  * Created by tylershen on 5/1/18.
  */
@@ -53,8 +55,14 @@ public class SectionContentAdapter extends RecyclerView.Adapter<SectionContentAd
     public void onBindViewHolder(ViewHolder holder, int position) {
         //get the movie data at the specified position
         Section section = sections.get(position);
-        //populate the view with the category data
-        holder.sectionContent.setText(section.getContents());
+        // obtain an instance of Markwon
+        final Markwon markwon = Markwon.create(context);
+//
+//// set markdown
+        markwon.setMarkdown(holder.sectionContent, "#### How can I get help with rental payments?\n**RAP (Rental Assistance Program) VOUCHERS:** RAP is a state-funded program administered by the Connecticut Department of Housing. Link(s) on Mary Wade:[ https://www.211ct.org/search/17322547](http://www.marywade.org/) [www.marywade.org](http://www.marywade.org/). \n\n The Department of Housing monitors the Section 8 Housing Choice Voucher (HCV) Program and State Rental Assistance Program (RAP) waiting lists statewide, and may open up the program periodically for a lottery, to be placed on the waiting list.");
+//        //populate the view with the category data
+        // holder.sectionContent.setText(section.getContents());
+
     }
 
     //return the size of the entire data set

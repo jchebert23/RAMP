@@ -1,0 +1,12 @@
+{
+
+  "pairs": [
+    {
+      "primary_care": "query1"
+    },
+    {
+      "pediatrics": "query2"
+    }
+  ]
+
+}
