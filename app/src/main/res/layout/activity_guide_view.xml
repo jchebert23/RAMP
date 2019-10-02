@@ -55,7 +55,8 @@
         android:layout_alignBottom="@id/tvSectionTitle"
         android:onClick="onBackwardClick"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/arrow_back" />
+        android:src="@drawable/arrow_back"
+        android:tint="@color/material_grey"/>
 
     <View
         android:id="@+id/horizontalDiv"

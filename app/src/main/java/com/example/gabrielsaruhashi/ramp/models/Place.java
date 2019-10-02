@@ -25,6 +25,7 @@ public class Place implements Parcelable{
     private String address;
     private String phoneNumer;
     private String walkInsAccepted;
+    private String categoryTitle;
 
     public int getId(){
         return this.id;
@@ -33,6 +34,8 @@ public class Place implements Parcelable{
     public double getLat() {return this.lat; }
 
     public double getLon() {return this.lon; }
+
+    public String getCategoryTitle() { return categoryTitle; }
 
     public String getName() { return name; }
 
@@ -48,6 +51,7 @@ public class Place implements Parcelable{
 
     public String toPrint(){ return "id: " + Integer.toString(id) + " latitude: " + Double.toString(lat) + " longitude: " + Double.toString(lon); }
 
+    public void setCategoryTitle(String catTitle) { categoryTitle = catTitle; }
     //To allow for parcelling:
     //https://stackoverflow.com/questions/7181526/how-can-i-make-my-custom-objects-parcelable
     //http://prasanta-paul.blogspot.com/2010/06/android-parcelable-example.html

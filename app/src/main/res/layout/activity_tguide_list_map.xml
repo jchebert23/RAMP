@@ -43,6 +43,7 @@
             android:layout_marginLeft="5dp"
             android:background="@color/material_brown"/>
         <TextView
+            android:id="@+id/tvDescript"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/horizontalDiv2"

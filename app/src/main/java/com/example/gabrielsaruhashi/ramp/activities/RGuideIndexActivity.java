@@ -86,6 +86,12 @@ public class RGuideIndexActivity extends AppCompatActivity {
         getGuide();
     }
 
+    @Override
+    protected void onPause() {
+
+        super.onPause();
+    }
+
     //get the list of current objects
     private void getGuide() {
         String url = base_url + String.format(name);
@@ -102,7 +108,6 @@ public class RGuideIndexActivity extends AppCompatActivity {
                     // iterate through array, create section objects
                     for (int i = 0; i < results.length(); i++) {
                         Section section = new Section(results.getJSONObject(i).getString("title"), results.getJSONObject(i).getString("content"), i);
-                        Log.i("RGuideIndexActivity", results.getJSONObject(i).getString("content"));
                         sections.add(section);
                         adapter.notifyItemInserted(sections.size() - 1);
                     }

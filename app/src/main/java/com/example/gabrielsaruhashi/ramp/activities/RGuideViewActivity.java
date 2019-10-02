@@ -1,15 +1,17 @@
 package com.example.gabrielsaruhashi.ramp.activities;
 
-import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gabrielsaruhashi.ramp.R;
@@ -20,7 +22,6 @@ import java.util.ArrayList;
 
 public class RGuideViewActivity extends AppCompatActivity {
 
-    public final static int NUMBER_OF_SECTIONS = 3;
     public final static String[] SECTION_TITLES = {"What are treatment options?", "What are payment options?", "Where do I start?"};
     public final static String[] SECTION_CONTENT = {"1. A talkline is a free service that everyone can use. It can also be called a “hotline” or “warmline”. A talkline is a phone number a person can call to speak privately to a trained counselor about anything that is bothering them. The counselor can help the caller find other services in their area that can help them in the long-term.\n" +
             "2. A support group is a group of people facing the same mental health challenge who meet to share their experiences and think about ways to help cope with challenges in their lives. Sometimes a trained counselor leads the group, but usually the people in the group come together as equals. This is a great choice for those who want to join a community of people in the same situation.\n" +
@@ -44,24 +45,36 @@ public class RGuideViewActivity extends AppCompatActivity {
     int currentSection;
     TextView tvNumber;
     TextView tvSectionTitle;
+    ImageView ivBack;
+    String sectionContent;
+    ArrayList<String> sectionContents;
+    ArrayList<String> sectionNames;
+    int numSections;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        makeSectionList();
 
         // Begin the transaction
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment
         currentSection = getIntent().getIntExtra("sectionNumber", 0);
-        SectionFragment section = SectionFragment.newInstance(currentSection, getIntent().getStringExtra("sectionName"));
+        sectionContent = getIntent().getStringExtra("sectionContent");
+        sectionNames = new ArrayList<String>(getIntent().getStringArrayListExtra("sectionNames"));
+        sectionContents = new ArrayList<String>(getIntent().getStringArrayListExtra("sectionContents"));
+        numSections = sectionNames.size();
+        makeSectionList();
+        SectionFragment section = SectionFragment.newInstance(currentSection, getIntent().getStringExtra("sectionName"), getIntent().getStringExtra("sectionContent"), sectionNames, sectionContents);
                 // pass in title, body
+
         ft.replace(R.id.placeholder, section).commit();
         setContentView(R.layout.activity_guide_view);
         tvNumber = (TextView)findViewById(R.id.tvNumber);
         tvNumber.setText(" " + (currentSection + 1) + " ");
         tvSectionTitle = findViewById(R.id.tvSectionTitle);
         tvSectionTitle.setText(sectionList.get(currentSection).getTitle());
+        ivBack = (ImageView)findViewById(R.id.ivBack);
     }
 
     @Override
@@ -92,8 +105,8 @@ public class RGuideViewActivity extends AppCompatActivity {
     }
 
     private void makeSectionList() {
-        for(int i = 0; i < NUMBER_OF_SECTIONS; i++){
-            Section section = new Section(SECTION_TITLES[i], SECTION_CONTENT[i], i);
+        for(int i = 0; i < numSections; i++){
+            Section section = new Section(sectionNames.get(i), sectionContents.get(i), i);
             sectionList.add(section);
         }
     }
@@ -103,16 +116,22 @@ public class RGuideViewActivity extends AppCompatActivity {
         FragmentTransaction newft = getSupportFragmentManager().beginTransaction();
         newft.setCustomAnimations(R.anim.slides,
                 R.anim.slides_out);
-        if (currentSection < NUMBER_OF_SECTIONS - 1) {
+        if (currentSection < numSections - 1) {
             // if not last section, move to the next one
-            SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection + 1).getNumber(), sectionList.get(currentSection + 1).getTitle());
+            SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection + 1).getNumber(), sectionList.get(currentSection + 1).getTitle(), sectionList.get(currentSection + 1).getContents(), sectionNames, sectionContents);
             currentSection++;
             newft.replace(R.id.placeholder, sectionFragment).commit();
             setContentView(R.layout.activity_guide_view);
             tvNumber = (TextView)findViewById(R.id.tvNumber);
             tvNumber.setText(" " + (currentSection + 1) + " ");
             tvSectionTitle = findViewById(R.id.tvSectionTitle);
-            tvSectionTitle.setText(sectionList.get(currentSection).getTitle());
+            tvSectionTitle.setText(sectionList.get(currentSection).getTitle());ivBack = (ImageView)findViewById(R.id.ivBack);
+            ivBack = (ImageView)findViewById(R.id.ivBack);
+            if (currentSection == 1) {
+                DrawableCompat.setTint(ivBack.getDrawable(), ContextCompat.getColor(this, R.color.material_brown));
+                ivBack.setColorFilter(ContextCompat.getColor(this,
+                        R.color.material_brown), android.graphics.PorterDuff.Mode.SRC_IN);
+            }
         }
 
     }
@@ -122,22 +141,23 @@ public class RGuideViewActivity extends AppCompatActivity {
         FragmentTransaction backFt = getSupportFragmentManager().beginTransaction();
         backFt.setCustomAnimations(android.R.anim.slide_in_left,
                 android.R.anim.slide_out_right);
-        Log.d("RGuideViewActivity", "current section: " + currentSection);
         if (currentSection > 0) {
             // if not first section, move to previous one
-            SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection - 1).getNumber(), sectionList.get(currentSection - 1).getTitle());
+            SectionFragment sectionFragment = SectionFragment.newInstance(sectionList.get(currentSection - 1).getNumber(), sectionList.get(currentSection - 1).getTitle(), sectionList.get(currentSection - 1).getContents(), sectionNames, sectionContents);
             currentSection--;
             backFt.replace(R.id.placeholder, sectionFragment).commit();
             setContentView(R.layout.activity_guide_view);
+            Drawable img = getResources().getDrawable(R.drawable.arrow_back);
+            ivBack = (ImageView)findViewById(R.id.ivBack);
+            if (currentSection == 0) {
+                DrawableCompat.setTint(ivBack.getDrawable(), ContextCompat.getColor(this, R.color.material_grey));
+                ivBack.setColorFilter(ContextCompat.getColor(this,
+                        R.color.material_grey), android.graphics.PorterDuff.Mode.SRC_IN);
+            }
             tvNumber = (TextView)findViewById(R.id.tvNumber);
             tvNumber.setText(" " + (currentSection + 1) + " ");
             tvSectionTitle = findViewById(R.id.tvSectionTitle);
             tvSectionTitle.setText(sectionList.get(currentSection).getTitle());
-        }
-        else {
-            // if first section, go to table of contents
-            Intent i = new Intent(RGuideViewActivity.this, RGuideIndexActivity.class);
-            startActivity(i);
         }
     }
 }

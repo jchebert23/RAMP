@@ -3,7 +3,6 @@ package com.example.gabrielsaruhashi.ramp.activities;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.PermissionChecker;
@@ -26,7 +25,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -39,7 +37,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcels;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -69,6 +70,7 @@ public class TGuideListMapActivity extends AppCompatActivity {
     SubCategory subcategory;
     TextView title;
     TextView tvSeeGuide;
+    TextView tvDescript;
 
     private final static String KEY_LOCATION = "location";
     ArrayList<Place> places = new ArrayList<>();
@@ -125,12 +127,15 @@ public class TGuideListMapActivity extends AppCompatActivity {
         }
         title = findViewById(R.id.tvMapTitle);
         tvSeeGuide = findViewById(R.id.tvSeeGuide);
+        tvDescript = findViewById(R.id.tvDescript);
 
         subcategory = Parcels.unwrap(getIntent().getParcelableExtra(SubCategory.class.getSimpleName()));
         title.setText(subcategory.getTitle().toString());
+        // tvDescript.setText(subcategory.getCatchPhrase().toString());
         if (subcategory.hasGuide() == 1) {
             // has guide, show text to view guide
             tvSeeGuide.setVisibility(View.VISIBLE);
+            tvSeeGuide.setText("See our " + subcategory.getTitle().toString() + " guide!");
             tvSeeGuide.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -140,6 +145,30 @@ public class TGuideListMapActivity extends AppCompatActivity {
                 }
             });
         }
+        String parameter = "";
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset());
+            JSONArray m_jArry = obj.getJSONArray("pairs");
+            ArrayList<HashMap<String, String>> formList = new ArrayList<HashMap<String, String>>();
+            HashMap<String, String> m_li;
+
+            for (int i = 0; i < m_jArry.length(); i++) {
+                JSONObject jo_inside = m_jArry.getJSONObject(i);
+                Log.d("Details-->", jo_inside.getString("primary_care"));
+                String formula_value = jo_inside.getString("primary_care");
+                parameter = jo_inside.getString("primary_care");
+                // String url_value = jo_inside.getString("url");
+
+                //Add your values in your `ArrayList` as below:
+                m_li = new HashMap<String, String>();
+                m_li.put("formule", formula_value);
+                // m_li.put("url", url_value);
+
+                formList.add(m_li);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         // load places fragment
         Two11Client newClient = new Two11Client();
@@ -148,7 +177,11 @@ public class TGuideListMapActivity extends AppCompatActivity {
                 try {
                     JSONArray placesJson = response.getJSONArray("results");
                     places.clear();
-                    places.addAll(Place.fromJson(placesJson));
+                    for (int i = 0; i < placesJson.length(); i++) {
+                        Place newPlace = Place.fromJson(placesJson.getJSONObject(i));
+                        newPlace.setCategoryTitle(subcategory.getTitle().toString());
+                        places.add(newPlace);
+                    }
                     placesFragment = PlacesFragment.newInstance(places);
                     FragmentTransaction ft = getFragmentManager().beginTransaction();
                     ft.replace(R.id.fragment_placeholder, PlacesFragment.newInstance(places));
@@ -160,10 +193,28 @@ public class TGuideListMapActivity extends AppCompatActivity {
         });
     }
 
+    public String loadJSONFromAsset() {
+        Log.d("TGuideListMapActivity", "loadJSON");
+        String json = null;
+        try {
+            InputStream is = getAssets().open("data.json");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+
+
     protected void loadMap(GoogleMap googleMap) {
         map = googleMap;
         if (map != null) {
-            Log.d("search", "success");
             // Map is ready
             Toast.makeText(this, "Map Fragment was loaded properly!", Toast.LENGTH_SHORT).show();
             //MapDemoActivityPermissionsDispatcher.getMyLocationWithPermissionCheck(this);
@@ -204,11 +255,9 @@ public class TGuideListMapActivity extends AppCompatActivity {
                             mapFragment.getMapAsync(new OnMapReadyCallback() {
                                 @Override
                                 public void onMapReady(GoogleMap map) {
-                                    Log.d("search", "ready");
                                     map.addMarker(new MarkerOptions()
                                         .position(uLatLong)
                                         .icon(BitmapDescriptorFactory.defaultMarker(180)));
-                                    //Log.d("search", "hello latitude: " + ulocation.getLatitude() + "longitude" + ulocation.getLongitude());
                                     LatLng location = null;
                                     for(int i = 0; i < places.size(); i++){
                                         location = new LatLng(places.get(i).getLat(), places.get(i).getLon());
