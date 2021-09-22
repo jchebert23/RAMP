@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public final static int NUMBER_OF_CATEGORIES = 6;
     public final static String[] CATEGORIES_DESCRIPTIONS = {"I need a job.", "I'm hungry.", "I need a doctor.", "I need housing.", "I need the weather.", "I need a lawyer."};
-    public final static int[] CATEGORIES_IMAGES = {R.drawable.ic_mental_category, R.drawable.ic_law_category, R.drawable.ic_mental_category, R.drawable.ic_law_category, R.drawable.ic_mental_category, R.drawable.ic_law_category};
+    public final static int[] CATEGORIES_IMAGES = {R.drawable.employment, R.drawable.food, R.drawable.health, R.drawable.housing, R.drawable.housing, R.drawable.law_1};
     //The array list that stores the categories
     ArrayList<Category> categories;
     ArrayList<Category> apiCats;
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         //svSearchview = (SearchView) findViewById(R.id.svSearchbar);
         //svSearchview.setIconifiedByDefault(false);  // set the default or resting state of the search field
 
-        if (haveNetworkConnection()) {
+        if (false) {
             getCurrentCategories();
         } else {
             getHardCoded();
