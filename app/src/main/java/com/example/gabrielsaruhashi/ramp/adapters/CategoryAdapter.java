@@ -58,10 +58,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Category category = categories.get(position);
         //populate the view with the category data
         holder.categoryTitle.setText(category.getStatus());
-
-        Glide.with(context)
-                .load(category.getIconURL())
-                .into(holder.categoryImage);
+        holder.categoryImage.setImageResource(category.getCategory_image());
     }
 
     //return the size of the entire data set
